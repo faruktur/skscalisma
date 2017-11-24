@@ -1,0 +1,106 @@
+﻿@model SksCalisma.Areas.Ogrenci.Models.IlanViewModel
+
+
+    @Html.ValidationSummary(true)
+    
+<div class="portlet light portlet-fit ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="icon-settings font-dark"></i>
+            <span class="caption-subject font-dark sbold uppercase">İlan Detayları</span>
+        </div>
+        <div class="tools">
+            <a href="javascript:void(0);" onclick="sepetkontrol(@Model.ilanID)" class="btn blue btn-outline sbold uppercase">Listeye Ekle</a>
+
+        </div>
+        
+    </div>
+    <div class="portlet-body">
+        <div class="row">
+            <div class="col-md-12">
+                <table id="user" class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <td style="width:15%"> @Html.DisplayNameFor(model => Model.personelID) </td>
+                            
+                            <td style="width:85%">
+                                <span class="text-muted"> @Html.DisplayFor(model=>Model.personelID) </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:15%"> @Html.DisplayNameFor(model => Model.calismaTipID) </td>
+
+                            <td style="width:85%">
+                                <span class="text-muted"> @Html.DisplayFor(model => Model.calismaTipID) </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:15%"> @Html.DisplayNameFor(model => Model.ilanEklemeTarih) </td>
+
+                            <td style="width:85%">
+                                <span class="text-muted"> @Html.DisplayFor(model => Model.ilanEklemeTarih) </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:15%"> @Html.DisplayNameFor(model => Model.ilanGüncellemeTarih) </td>
+
+                            <td style="width:85%">
+                                <span class="text-muted"> @Html.DisplayFor(model => Model.ilanGüncellemeTarih) </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:15%"> @Html.DisplayNameFor(model => Model.ilanCalisanSayisi) </td>
+
+                            <td style="width:85%">
+                                <span class="text-muted"> @Html.DisplayFor(model => Model.ilanCalisanSayisi) </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:15%"> @Html.DisplayNameFor(model => Model.ilanCalisanGun) </td>
+
+                            <td style="width:85%">
+                                <table class="table">
+                                  
+                                        <tr>
+                                            <td class="numeric"> Pazartesi </td>
+                                            <td class="numeric"> Salı </td>
+                                            <td class="numeric"> Çarşamba </td>
+                                            <td class="numeric"> Perşembe </td>
+                                            <td class="numeric"> Cuma </td>
+                                          
+                                        </tr>
+                                    <tr>
+                                        @foreach (var item in Model.gunvesaat)
+                                        {
+
+                                            <td>@item</td>
+
+                                        }
+                                    </tr>                             
+</table>
+                                
+                            </td>
+                        </tr>
+                      
+                        <tr>
+                            <td style="width:15%">İlan Detayları</td>
+                            <td style="width:85%">@Html.Raw(Model.ilanMetni)</td>
+                        </tr>
+                       
+                        <tr>
+                     
+                       
+                       
+                       
+                        
+                      
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+      
+
+        
+    </div>
+</div>

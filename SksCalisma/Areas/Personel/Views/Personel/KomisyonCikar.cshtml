@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "KomisyonCikar";
+    Layout = "~/Views/Shared/_LayoutGirisEkrani.cshtml";
+}
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .auto-style2 {
+            width: 800px;
+        }
+
+        .auto-style3 {
+            width: 367px;
+            height: 42px;
+        }
+
+        .auto-style4 {
+            width: 236px;
+            height: 42px;
+        }
+
+        .auto-style5 {
+            width: 125px;
+            height: 42px;
+        }
+
+        .auto-style6 {
+            height: 42px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:DataList ID="ddlKomisyonSec" runat="server" CellPadding="4" ForeColor="#333333" OnItemCommand="ddlKomisyonCikar_ItemCommand">
+        <alternatingitemstyle backcolor="White" />
+        <footerstyle backcolor="#507CD1" font-bold="True" forecolor="White" />
+        <headerstyle font-bold="True" forecolor="Black" />
+        <headertemplate>
+            <div class="panel-heading" style="font-size:20px">KOMİSYON ÇIKAR</div>
+            <div class="panel panel-info">
+                <table class="table">
+                    <tr>
+                        <td class="auto-style5">Ad</td>
+                        <td class="auto-style4">Soyad</td>
+                        <td class="auto-style3">Mail</td>
+                        <td class="auto-style6">Komisyon Cıkış</td>
+                    </tr>
+                </table>
+        </headertemplate>
+        <itemstyle backcolor="#EFF3FB" />
+        <itemtemplate>
+            <table class="table">
+                <tr>
+                    <td class="auto-style5"></td>
+                    <td class="auto-style4"></td>
+                    <td class="auto-style3"></td>
+                    <td class="auto-style6">
+                        <asp:LinkButton ID="" runat="server" CommandArgument='<%#Eval("id") %>' CommandName="komisyoncikar"> <img src="~/Content/img/_LayoutPersonel/aktif.png" style="width:20px;height:20px" /></asp:LinkButton>
+                    </td>
+                </tr>
+            </table>
+        </itemtemplate>
+        <selecteditemstyle backcolor="#D1DDF1" font-bold="True" forecolor="#333333" />
+    </asp:DataList>
+</asp:Content>
+

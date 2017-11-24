@@ -1,0 +1,17 @@
+﻿@model SksCalisma.Models.PersonelYetki
+<li class="mt-list-item" id="@string.Format("yetki{0}",Model.personelYetkiID)">
+    <div class="list-icon-container">
+        @using (Ajax.BeginForm("YetkiKaldir", new AjaxOptions { HttpMethod = "POST", OnSuccess = "$('#yetki" + Model.personelYetkiID + "').remove();" }))
+        {
+            <input type="hidden" value="@Model.yetkiTipID" name="yetkiTipID" />
+            <input type="hidden" value="@Model.personelID" name="personelID" />
+            <button type="submit" class="close"></button>
+        }
+    </div>
+    <div class="list-item-content">
+        <h3 class="uppercase">
+            <a href="javascript:;">@Model.YetkiTip.yetkiTipAd </a>
+        </h3>
+    </div>
+</li>
+

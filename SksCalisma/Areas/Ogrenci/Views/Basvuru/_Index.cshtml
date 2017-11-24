@@ -1,0 +1,94 @@
+﻿@model SksCalisma.Areas.Ogrenci.Models.IlanMainModel
+@using System.Collections;
+@using PagedList
+@using PagedList.Mvc
+
+
+
+
+
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs"></i>İlanlar
+        </div>
+    </div>
+
+    <div class="portlet-body flip-scroll">
+
+        <table class="table table-bordered table-striped table-condensed flip-content" id="tablo2">
+            <thead class="flip-content">
+                <tr>
+                    <th class="numeric"> İlan Ayrıntıları </th>
+                    <th class="numeric"> Eklenme Tarihi </th>
+                    <th class="numeric"> Güncellenme Tarihi </th>
+                    <th class="numeric"> Çalışan Sayısı </th>
+                    <th class="numeric"> Çalışma Günleri </th>
+                    <th class="numeric"> Çalışma Tipi</th>
+                    <th width="20%"> Öğrenim Tipi </th>
+                    <th>Fakülte</th>
+                    <th>Bölüm</th>
+                    <th>Detaylar</th>
+
+                    <th>Başvuru</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (int i=0;i<Model.list.Count;i++)
+                {
+                    @Html.HiddenFor(modelitem => Model.list[i].ilanID)
+                    <tr id="yeni">
+
+                        <td>
+                            @Html.DisplayFor(modelitem=> Model.list[i].ilanMetni)
+                        </td>
+                        <td>
+        @Html.DisplayFor(modelItem => Model.list[i].ilanEklemeTarih)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.list[i].ilanGüncellemeTarih)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.list[i].ilanCalisanSayisi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.list[i].ilanCalisanGun)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.list[i].CalismaTip.calismaTipAd)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.list[i].OgrenimTip.ogrenimTipAd)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.list[i].fakulte)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => Model.list[i].bolum)
+    </td>
+    <td>
+
+        <a data-id="@Model.list[i].ilanID" onclick="detaygoruntule(@Model.list[i].ilanID)" id="detaybuton" class="btn blue btn-outline sbold uppercase detaybuton" href="javascript:void(0);">Detaylar</a>
+    </td>
+
+    <td>
+        <a href="javascript:void(0);" onclick="sepetkontrol(@Model.list[i].ilanID)" class="btn blue btn-outline sbold uppercase">Listeye Ekle</a>
+    </td>
+                    </tr>
+                }
+             
+            </tbody>
+          
+           
+        </table>
+        <div id="myPager">
+
+            @Html.PagedListPager(Model.list, page => Url.Action("Index", new { page = page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions { UpdateTargetId = "ilanlarsayfa", InsertionMode = InsertionMode.Replace }))
+
+        </div>
+
+       
+    </div>
+
+</div>

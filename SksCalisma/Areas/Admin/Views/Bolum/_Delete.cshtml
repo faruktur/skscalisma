@@ -1,0 +1,12 @@
+﻿@model SksCalisma.Models.Bolum
+@using (Html.BeginForm("Delete", "Bolum", FormMethod.Post, htmlAttributes: new { Area = "Admin" }))
+{
+    <div class="modal-body">
+        @Model.bolumAd adlı birimi silmek istediğinize emin misiniz?
+    </div>
+    <div class="modal-footer">
+        @Html.AntiForgeryToken()
+        <input type="hidden" value="@Model.bolumID" name="id" />
+        <input type="submit" value="Onayla" class="btn green" />
+    </div>
+}

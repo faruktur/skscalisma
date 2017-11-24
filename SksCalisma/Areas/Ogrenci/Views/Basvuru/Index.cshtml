@@ -1,0 +1,176 @@
+﻿@model SksCalisma.Areas.Ogrenci.Models.IlanMainModel
+@using System.Collections;
+@using PagedList
+@using PagedList.Mvc
+@{
+   
+    ViewBag.Title = "İlan Basvuru";
+    Layout = "~/Views/Shared/_LayoutOgrenci.cshtml";
+    
+   
+}
+
+
+<div class="modal fade draggable-modal ui-draggable" id='myModal' role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" id="closbtn" class="close" data-dismiss="modal" aria-hidden="true">Kapat</button>
+                <h4 class="modal-title">Detaylar</h4>
+            </div>
+                <div id='myModalContent'>
+                   
+
+                </div>
+               
+              
+
+            
+            <div id="loading" class="col-sm-offset-4">
+                <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif"  /> Yükleniyor
+            </div>          
+                
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+
+      @Html.Partial("SepetList", new SksCalisma.Areas.Ogrenci.Models.SepetViewModel())
+   
+        @using (Ajax.BeginForm("Index", new AjaxOptions { OnSuccess = "onsuccess" }))
+        {
+         <div id = "ilanlarsayfa" >
+             @Html.Partial("_Index", Model)
+         </div >
+        }
+
+
+
+    </div>
+</div>
+
+
+@section scripts
+    {
+
+
+    <script>
+            var TeamDetailPostBackURL = '/Ogrenci/Basvuru/DetayGetir';
+            function detaygoruntule(id) {
+                var options = { "backdrop": "static", keyboard: true };
+                $('#myModal').modal('show');
+                $("#loading").show();
+                $.ajax({
+                type: "GET",
+                    url: TeamDetailPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "id": id },
+                    datatype: "json",
+                    success: function (data) {
+                    debugger;
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal(options);
+                        $("#loading").hide();
+                },
+
+                    error: function () {
+                        $('#myModal').modal('hide');
+                        $("#loading").hide();
+                }
+            });
+
+        }
+            //$("#closebtn").on('click',function(){  
+            //    $('#myModal').modal('hide');    
+            $("#closbtn").click(function () {
+                $('#myModal').modal('hide');
+        });
+
+
+
+    </script>
+
+
+    <script>
+        function sepetkontrol(id)
+        {
+            $.fn.rowCount = function () {
+                return $('tr', $(this).find('tbody')).length;
+            };
+
+            var ilan = $('#tablo').rowCount();
+
+
+            if(ilan>=3)
+            {
+
+                alert("En fazla 3 ilan ekleyebilirsiniz.");
+                $(".ilanekle").attr("disabled", true);
+
+
+            }
+            else
+            {
+                var list = new Array();
+                var sayac = 0;
+                $("#tablo tbody tr").each(function () {
+                    list[sayac] = $(this).attr("id");
+                    sayac = sayac + 1;
+                });
+
+                
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Ogrenci/Basvuru/IlanGetir",
+                    data: { 'sepet': list, 'id': id },
+                    success: function (data) {
+                        $("#sepet tr").remove();
+                        $("#sepet").append(data);
+
+                    },
+                    error: function (error) {
+                        alert('Hata');
+                    }
+                })
+
+            }
+
+
+
+        }
+    </script>
+
+    <script>
+        function sil(id)
+        {
+            $("#"+id).remove();
+        }
+
+</script>
+@*<script type="text/javascript">
+    $(function() {
+    $('#myPager').on('click',function() {
+        $.ajax({
+            url: this.href,
+            type: 'GET',
+            cache: false,
+            success: function (result) {
+                $('#ilanlarsayfa').children().remove();
+                $('#ilanlarisayfa').append(result);
+            }
+        });
+        return false;
+    });
+    });
+</script>*@
+   
+
+ 
+    }

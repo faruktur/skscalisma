@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "HazirlaOnayla";
+    Layout = "~/Views/Shared/_LayoutPersonel.cshtml";
+}
+
+<div class="page-container-bg-solid">
+
+
+    <div class="page-boxed">
+        <div class="col-md-12 col-sm-12 col-lg-12">
+            <div class="cool-md-12 col-sm-12 col-lg-12">
+                <div class="center-block font-grey-cascade" style="font-size:20px;text-align:center">HAZIRLAYAN-ONAYLAYAN KAYIT</div>
+                <br />
+                <div class="col-md-6">
+                    <label>ADI</label><input name="ctl00$ContentPlaceHolder1$TxtAd" type="text" id="ContentPlaceHolder1_TxtAd" class="form-control" />
+                </div>
+                <div class="col-md-6">
+                    <label>SOYADI</label>
+                    <input name="ctl00$ContentPlaceHolder1$txtSoyad" type="text" id="ContentPlaceHolder1_txtSoyad" class="form-control" />
+                </div>
+                <div class="col-md-6 margin-top-10">
+                    <label>ÜNVAN</label>
+                    <input name="ctl00$ContentPlaceHolder1$txtUnvan" type="text" id="ContentPlaceHolder1_txtUnvan" class="form-control" />
+                </div>
+                <div class="col-md-6 margin-top-10">
+                    <label>HAZ/ONAY</label>
+                    <select name="ctl00$ContentPlaceHolder1$ddListUnvan" id="ContentPlaceHolder1_ddListUnvan" class="form-control ">
+                        <option value="0">SE&#199;İNİZ</option>
+                        <option value="HAZIRLAYAN">HAZIRLAYAN</option>
+                        <option value="ONAYLAYAN">ONAYLAYAN</option>
+
+                    </select>
+                </div>
+            </div>
+            <div class="container col-md-12 col-sm-12 col-lg-12 margin-top-20">
+                <div class="row">
+                    <div class="col-md-offset-11">
+                        <input type="submit" name="ctl00$ContentPlaceHolder1$btnOnaylayanKayit" value="Kaydet" id="ContentPlaceHolder1_btnOnaylayanKayit" class="btn btn-default " />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container margin-top-20">
+        <div class="col-md-12" style="font-size:20px">
+            <strong><center><span id="ContentPlaceHolder1_lblKayitli" style="color:Gray;">Kayıtlı Kişiler</span></center></strong>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-12">
+            <table id="ContentPlaceHolder1_DtlistIlan" class="col-md-12 margin-top-20 " cellspacing="0" cellpadding="3" rules="cols" style="color:Black;background-color:White;border-color:#999999;border-width:1px;border-style:Solid;font-size:Larger;border-collapse:collapse;">
+                <tr>
+                    <td style="color:White;background-color:Black;font-weight:bold;">
+                        <table class="col-md-12 margin-top-10">
+                            <tr>
+                                <td class="col-md-2">AD</td>
+                                <td class="col-md-2"> SOYAD</td>
+                                <td class="col-md-3">UNVAN</td>
+                                <td class="col-md-3">HAZIRLAYAN</td>
+                                <td class="col-md-2">SİL</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table class="col-md-12 margin-top-10">
+                            <tr>
+                                <td class="col-md-2">YÜCEL                         </td>
+                                <td class="col-md-2">ERDAĞ                         </td>
+                                <td class="col-md-3">FAKÜLTE SEKRETERİ                                 </td>
+                                <td class="col-md-3">HAZIRLAYAN   </td>
+                                <td class="col-md-2">
+                                    <a id="ContentPlaceHolder1_DtlistIlan_LinkbtnSil_0" class="btn btn-default" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$DtlistIlan$ctl01$LinkbtnSil&#39;,&#39;&#39;)">
+                                        sil
+                                    </a>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="background-color:#CCCCCC;">
+                        <table class="col-md-12 margin-top-10">
+                            <tr>
+                                <td class="col-md-2">NEJAT                         </td>
+                                <td class="col-md-2">YUMUŞAK                       </td>
+                                <td class="col-md-3">DEKAN                                             </td>
+                                <td class="col-md-3">ONAYLAYAN    </td>
+                                <td class="col-md-2">
+                                    <a id="ContentPlaceHolder1_DtlistIlan_LinkbtnSil_1" class="btn btn-default" href="javascript:__doPostBack(&#39;ctl00$ContentPlaceHolder1$DtlistIlan$ctl02$LinkbtnSil&#39;,&#39;&#39;)">
+                                        sil
+                                    </a>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>

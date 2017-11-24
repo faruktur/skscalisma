@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e972feb5ac3a4cdfb107332ede92eafe" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="Models.AileSgk" Width="1.5" PointX="9" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AnketCevap" Width="1.5" PointX="5.25" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AnketSecenek" Width="1.5" PointX="3" PointY="25.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AnketSoru" Width="1.5" PointX="0.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AsilListe" Width="1.5" PointX="8.25" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Birim" Width="1.5" PointX="8.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BirimFiyat" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BirimKontejyan" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BirimTip" Width="1.5" PointX="6" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BirimTur" Width="1.5" PointX="3.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Bolum" Width="1.5" PointX="8.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BolumKontejyan" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.CalisanYoklama" Width="1.5" PointX="7.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.CalismaTip" Width="1.5" PointX="6" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.CalismaYeri" Width="1.5" PointX="5.25" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.CikanKisi" Width="1.5" PointX="13.5" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.EklenenKisi" Width="1.5" PointX="5.25" PointY="34" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.EngelDurum" Width="1.5" PointX="5.25" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Ilan" Width="1.5" PointX="8.25" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.IsTakip" Width="1.5" PointX="5.25" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Kullanici" Width="1.5" PointX="3" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.KullaniciTip" Width="1.5" PointX="0.75" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Muhasebe" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Mulakat" Width="1.5" PointX="10.5" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.MulakatSoru" Width="1.5" PointX="12.75" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Ogrenci" Width="1.5" PointX="11.25" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.OgrenciBasvuru" Width="1.5" PointX="13.5" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.OgrenciCalisma" Width="1.5" PointX="7.5" PointY="45" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.OgrenimTip" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.OgrenimTur" Width="1.5" PointX="9" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Okul" Width="1.5" PointX="9" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.OkulBolum" Width="1.5" PointX="9" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.OkulTip" Width="1.5" PointX="6.75" PointY="40.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Personel" Width="1.5" PointX="8.25" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.PersonelYetki" Width="1.5" PointX="10.5" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.PuantajAyBelirle" Width="1.5" PointX="2.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.PuantajGirmeSure" Width="1.5" PointX="2.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.PuantajYetki" Width="1.5" PointX="5.25" PointY="64" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.ResmiTatilGun" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Sinif" Width="1.5" PointX="9" PointY="54.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.sysdiagrams" Width="1.5" PointX="2.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.YasalKesinti" Width="1.5" PointX="5.25" PointY="66.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.YetkiTip" Width="1.5" PointX="8.25" PointY="57" IsExpanded="true" />
+        <AssociationConnector Association="Models.FK_Ogrenci_AileSgk" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_AnketCevap_AnketSecenek" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_AnketCevap_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_AnketSecenek_AnketSoru" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_AsilListe_BirimKontejyan" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_AsilListe_BolumKontejyan" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_AsilListe_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_AsilListe_Kullanici1" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Birim_BirimKontejyan" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Birim_BirimTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Bolum_Birim" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CalismaYeri_Birim" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CikanKisi_Birim" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_EklenenKisi_Birim" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Mulakat_Birim" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Personel_Birim" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_BirimFiyat_CalismaTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_BirimTip_BirimTur" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Bolum_BolumKontejyan" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CalismaYeri_Bolum" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CikanKisi_Bolum" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_EklenenKisi_Bolum" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Mulakat_Bolum" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Personel_Bolum" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CalisanYoklama_CalismaYeri" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CalismaYeri_CalismaTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ilan_CalismaTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CalismaYeri_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CikanKisi_CalismaYeri" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_OgrenciCalisma_CalismaYeri" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CikanKisi_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_CikanKisi_Kullanici1" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_EklenenKisi_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ogrenci_EngelDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_OgrenciCalisma_EngelDurum" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ilan_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ilan_OgrenimTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Mulakat_Ilan" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_OgrenciBasvuru_Ilan" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_IsTakip_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_IsTakip_Kullanici1" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Kullanici_KullaniciTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ogrenci_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ogrenci_Kullanici1" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_OgrenciBasvuru_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_OgrenciCalisma_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Personel_Kullanici1" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_PuantajYetki_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_YasalKesinti_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_MulakatSoru_Mulakat" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ogrenci_OgrenimTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ogrenci_OgrenimTur" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ogrenci_Okul" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ogrenci_OkulBolum" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Ogrenci_Sinif" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_OgrenciCalisma_OgrenimTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_OgrenciCalisma_YasalKesinti" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Okul_OkulTip" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_OkulBolum_Okul" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_PersonelYetki_Personel" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_PersonelYetki_YetkiTip" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

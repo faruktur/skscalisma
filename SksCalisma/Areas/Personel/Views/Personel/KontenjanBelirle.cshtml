@@ -1,0 +1,194 @@
+﻿@using SksCalisma.Models;
+
+@{
+    ViewBag.Title = "KontenjanBelirle";
+    Layout = "~/Views/Shared/_LayoutPersonel.cshtml";
+    kismizamanli2014Entities1 db = new kismizamanli2014Entities1();
+    var birimler = db.Birim;
+    var bölümler = db.OkulBolum;
+}
+
+
+
+    <div class="page-container-bg-solid">
+
+        <div class="pull-right">
+
+            @* BİRİM *@
+            <div class="row margin-top-40">
+                <div class="col-md-3 ">
+                    <label for="MovieType">BİRİM</label>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <select id="BirimSelect" name="MovieType" class="form-control">
+
+                            @foreach (var birim in birimler)
+                            {
+                                <option value="@birim.birimID">@birim.birimAd</option>
+                                
+                            }
+                        </select>
+
+                    </div>
+                </div>
+
+            </div>
+
+            @* BÖLÜM *@
+            <div class="row margin-bottom-35">
+                <div class="col-md-3">
+                    <label for="MovieType">BÖLÜM</label>
+                </div>
+                <div class="col-md-4">
+                    <select id="MovieType" name="MovieType" class="form-control">
+
+                        @foreach (var bölüm in bölümler)
+                        {
+                            <option value="@bölüm.okulBolumID">@bölüm.okulBolumAd</option>
+                        }
+                    </select>
+                </div>
+
+            </div>
+
+            @* TALEP BELİRLE *@
+            <div class="row margin-bottom-35">
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4  margin-bottom-20 margin-top-20" style="font-size:larger;">
+                    <strong>
+                        TALEP BELİRLE
+                    </strong>
+                </div>
+
+            </div>
+
+            @* KALAN KONT *@
+            <div class="row margin-bottom-15">
+                <div class="col-md-3">
+                    <label for="MovieType">KALAN KONTENJAN</label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" id="" placeholder="0" disabled>
+                </div>
+
+            </div>
+
+            @* AKADEMİK KONT *@
+            <div class="row margin-bottom-15">
+                <div class="col-md-3">
+                    <label for="MovieType">AKADEMİK KONTENJAN</label>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="" placeholder="0">
+                </div>
+
+            </div>
+
+            @* İDARİ KONT *@
+            <div class="row margin-bottom-15">
+                <div class="col-md-3">
+                    <label for="MovieType">İDARİ KONTENJAN</label>
+                </div>
+                <div class="col-md-5">
+                    <input type="text" class="form-control" id="" placeholder="0">
+                </div>
+            </div>
+
+            @* LİSTEYE EKLE *@
+            <div class="row margin-bottom-10">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-5">
+                    <input type="submit" name="" value="Listeye Ekle" id="" class="btn green col-md-12" />
+                </div>
+
+            </div>
+
+            @* NOT *@
+            <div class="ms-container">
+                <div class="col-md-12 row margin-top-20" style="font-size:larger; color:Red;">
+                    <strong>
+                        Listeye Eklenen Taleplerin SKS ye gönderilmesi için Aşağıdaki DEVAM ET-GONDER  butonuna Basmanız Gerekmektedir.
+                    </strong>
+                </div>
+            </div>
+
+        </div>
+
+        @* LİSTEE *@
+        <div class="row margin-bottom-35 col-md-12">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-10 col-md-offset-5 row margin-top-10" style="font-size:larger;">
+                <strong>
+                    LİSTE
+                </strong>
+            </div>
+
+        </div>
+        @* TABLO *@
+        <div class="row margin-bottom-35 col-md-12">
+            <div class="col-md-12">
+                <table id="" class="table" cellspacing="0" cellpadding="4" style="color:#333333; border-collapse:collapse;">
+                    <tr>
+                        <td style="color:White; background-color:#507CD1; font-weight:bold;">
+                            <table class="col-md-12">
+                                <tr>
+                                    <td class="col-md-3">
+                                        BİRİM
+                                    </td>
+                                    <td class="col-md-3">
+                                        BÖLÜM
+                                    </td>
+                                    <td class="col-md-2">
+                                        İDARİ KONTENJAN
+                                    </td>
+                                    <td class="col-md-3">
+                                        AKADEMİK KONTENJAN
+                                    </td>
+                                    <td class="col-md-3">
+                                        SİL
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+
+                <div id="goster">
+                    <!--<div class="margin-bottom-10"><strong>
+                      SKS ye gönderdikten sonra talep edilen kontenjanınız kapatılacaktır. Eğer Devam etmek istiyorsanız aşağıdaki butona tıklayınız
+                    </strong></div>-->
+                    <input type="submit" name="" value="Tamamla" id="" class="btn green" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+@section customJS{
+    
+    <script>
+        $("#BirimSelect").change(function () {
+            var birimID = $("#BirimSelect").val();
+            $.get("getBolumByBirim?birimID=" + birimID, function (data) {
+                console.log(data);
+            });
+        });
+</script>
+    }
+
+
+
+
+
+
+
+

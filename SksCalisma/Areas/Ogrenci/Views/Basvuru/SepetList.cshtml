@@ -1,0 +1,50 @@
+﻿@model SksCalisma.Areas.Ogrenci.Models.SepetViewModel
+
+@using (Html.BeginForm("Index", "Basvuru", FormMethod.Post))
+{
+    <div class="portlet grey-cascade box">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-cogs"></i>Seçilen İlanlar
+            </div>
+            
+        </div>
+        <div class="portlet-body">
+            <div class="table-responsive" id="tablo">
+                <table class="table table-hover table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="numeric"> İlan Ayrıntıları </th>
+                            <th class="numeric"> Eklenme Tarihi </th>
+                            <th class="numeric"> Güncellenme Tarihi </th>
+                            <th class="numeric"> Çalışan Sayısı </th>
+                            <th class="numeric"> Çalışma Günleri </th>
+                            <th class="numeric"> Çalışma Tipi</th>
+                            <th width="20%"> Öğrenim Tipi </th>
+                            <th> Başvuru </th>
+                            <th>Detaylar</th>
+                            <th>Seçimi Kaldır</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sepet">
+                       
+                    </tbody>
+
+                </table>
+            </div>
+            <div class="row form-actions">
+                <div class="row">
+                    <div class="col-md-offset-9 col-md-3">
+                        <input type="submit" class="btn btn-success" value="Başvuruları Tamamla" />
+                    </div>
+                </div>
+                </div>
+
+
+        </div>
+
+    </div>
+
+}
+
+

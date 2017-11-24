@@ -1,0 +1,158 @@
+﻿@model List<SksCalisma.Models.Bolum>
+@{
+    ViewBag.Title = "Kontenjan";
+}
+@section styles{
+    <link href="~/Content/css/jquery.notific8.min.css" rel="stylesheet" />
+}
+
+<div class="row">
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i>Kontenjan Belirle
+            </div>
+            <div class="tools">
+            </div>
+        </div>
+        <div class="portlet-body" style="display: block; padding-bottom:30px;">
+            <table class="table">
+                <tr>
+                    <td>Birim Akademik Kontenjan : <span id="akademik">@Model[0].Birim.BirimKontejyan.birimKontejyanAkademi</span></td>
+                    <td>Bölümler Toplam Akademik Kontenjan : <span id="toplamAkademik"></span></td>
+                </tr>
+                <tr>
+                    <td>Birim İdari Kontenjan : <span id="idari">@Model[0].Birim.BirimKontejyan.birimKontejyanIdari</span></td>
+                    <td>Bölümler Toplam İdari Kontenjan : <span id="toplamIdari"></span></td>
+                </tr>
+                <tr>
+                    <td>Birim Ek Akademik Kontenjan : <span id="ekAkademik">@Model[0].Birim.BirimKontejyan.birimKontejyanEkAkademi</span></td>
+                    <td>Bölümler Toplam Ek Akademik Kontenjan : <span id="toplamEkAkademik"></span></td>
+                </tr>
+                <tr>
+                    <td>Birim Ek İdari Kontenjan : <span id="ekIdari">@Model[0].Birim.BirimKontejyan.birimKontejyanEkIdari</span></td>
+                    <td>Bölümler Toplam Ek İdari Kontenjan : <span id="toplamEkIdari"></span></td>
+                </tr>
+            </table>
+            <div class="panel-group accordion" id="accordion3">
+                @using (Html.BeginForm("Kontenjan", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion3" href="@string.Format("#collapse{0}",Model[i].bolumID)" aria-expanded="false"> @Model[i].bolumAd </a>
+                                </h4>
+                            </div>
+                            <div id="@string.Format("collapse{0}",Model[i].bolumID)" class="panel-collapse collapse" aria-expanded="false">
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        @Html.HiddenFor(model => model[i].bolumKontejyanID)
+                                        <div class="form-group form-md-line-input">
+                                            @Html.LabelFor(model => model[i].BolumKontejyan.bolumKontejyanAkademi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBox("model[" + i + "].BolumKontejyan.bolumKontejyanAkademi", Model[i].BolumKontejyan.bolumKontejyanAkademi, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model[i].BolumKontejyan.bolumKontejyanAkademi, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-md-line-input">
+                                            @Html.LabelFor(model => model[i].BolumKontejyan.bolumKontejyanIdari, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBox("model[" + i + "].BolumKontejyan.bolumKontejyanIdari", Model[i].BolumKontejyan.bolumKontejyanIdari, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model[i].BolumKontejyan.bolumKontejyanIdari, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-md-line-input">
+                                            @Html.LabelFor(model => model[i].BolumKontejyan.bolumKontejyanEkAkademi, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBox("model[" + i + "].BolumKontejyan.bolumKontejyanEkAkademi", Model[i].BolumKontejyan.bolumKontejyanEkAkademi, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model[i].BolumKontejyan.bolumKontejyanEkAkademi, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-md-line-input">
+                                            @Html.LabelFor(model => model[i].BolumKontejyan.bolumKontejyanEkIdari, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBox("model[" + i + "].BolumKontejyan.bolumKontejyanEkIdari", Model[i].BolumKontejyan.bolumKontejyanEkIdari, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model[i].BolumKontejyan.bolumKontejyanEkIdari, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-md-line-input">
+                                            @Html.LabelFor(model => model[i].BolumKontejyan.bolumKontejyanAkademiNot, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBox("model[" + i + "].BolumKontejyan.bolumKontejyanAkademiNot", Model[i].BolumKontejyan.bolumKontejyanAkademiNot, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model[i].BolumKontejyan.bolumKontejyanAkademiNot, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group form-md-line-input">
+                                            @Html.LabelFor(model => model[i].BolumKontejyan.bolumKontejyanIdarıNot, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.TextBox("model[" + i + "].BolumKontejyan.bolumKontejyanIdarıNot", Model[i].BolumKontejyan.bolumKontejyanIdarıNot, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model[i].BolumKontejyan.bolumKontejyanIdarıNot, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @Html.Hidden("model[" + i + "].BolumKontejyan.bolumKontejyanID", Model[i].BolumKontejyan.bolumKontejyanID)
+                        @Html.Hidden("model[" + i + "].BolumKontejyan.bolumKontejyanEklemeTarih", Model[i].BolumKontejyan.bolumKontejyanEklemeTarih)
+                        @Html.Hidden("model[" + i + "].BolumKontejyan.bolumKontejyanGuncellemeTarih", Model[i].BolumKontejyan.bolumKontejyanGuncellemeTarih)
+                    }
+                    <div class="form-group form-md-line-input" >
+                        <button type="submit" class="btn btn-outline green pull-right" id="btn">Kaydet</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/jquery.notific8.min.js"></script>
+    <script src="~/Content/js/ui-notific8.min.js"></script>
+    <script>
+        function update() {
+            var akademik = 0, idari = 0, ekAkademik = 0, ekIdari = 0;
+            for (var i = 0; i < @Model.Count; i++) {
+                akademik += parseInt($('input[name="model[' + i + '].BolumKontejyan.bolumKontejyanAkademi"]').val());
+                idari += parseInt($('input[name="model[' + i + '].BolumKontejyan.bolumKontejyanIdari"]').val());
+                ekAkademik += parseInt($('input[name="model[' + i + '].BolumKontejyan.bolumKontejyanEkAkademi"]').val());
+                ekIdari += parseInt($('input[name="model[' + i + '].BolumKontejyan.bolumKontejyanEkIdari"]').val());
+            }
+            $('#toplamAkademik').html(akademik);
+            $('#toplamIdari').html(idari);
+            $('#toplamEkAkademik').html(ekAkademik);
+            $('#toplamEkIdari').html(ekIdari);
+        }
+        $(document).ready(function () {
+            update();
+        })
+        $('input').keyup(function () {
+            update();
+            if (parseInt($('#toplamAkademik').html()) > parseInt($('#akademik').html()) || 
+                parseInt($('#toplamIdari').html()) > parseInt($('#idari').html()) || 
+                parseInt($('#toplamEkAkademik').html()) > parseInt($('#ekAkademik').html()) || 
+                parseInt($('#toplamEkIdari').html()) > parseInt($('#ekIdari').html())) {
+                $('#btn').prop('disabled', true);
+                $.notific8('Bölüm kontenjanlarının toplamları birim kontenjanını geçmemeli. Lütfen tekrar kontrol edin.', {
+                    heading: 'Hata',
+                    sticky: true,
+                    horizontalEdge: 'bottom',
+                    verticalEdge: 'right',
+                    zindex: 1500,
+                    closeText: 'kapat'
+                });
+            }
+            else {
+                $('#btn').prop('disabled', false);
+                $('.jquery-notific8-notification').remove();
+            }
+        })
+    </script>    
+}

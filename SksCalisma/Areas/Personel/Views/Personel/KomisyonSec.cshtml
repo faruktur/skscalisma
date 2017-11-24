@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "KomisyonSec";
+    Layout = "~/Views/Shared/_LayoutGirisEkrani.cshtml";
+}
+
+
+    <style type="text/css">
+        .auto-style2 {
+            width: 800px;
+        }
+
+        .auto-style3 {
+            width: 367px;
+            height: 42px;
+        }
+
+        .auto-style4 {
+            width: 236px;
+            height: 42px;
+        }
+
+        .auto-style5 {
+            width: 125px;
+            height: 42px;
+        }
+
+        .auto-style6 {
+            height: 42px;
+        }
+    </style>
+
+
+    <div class="panel-heading" style="font-size:20px">KOMİSYON EKLE</div>
+    <div class="panel panel-info">
+        <table class="table">
+            <tr>
+                <td class="auto-style5">Ad</td>
+                <td class="auto-style4">Soyad</td>
+                <td class="auto-style3">Mail</td>
+                <td class="auto-style6">Komisyon Sec</td>
+            </tr>
+        </table>
+
+
+        <table class="table">
+            <tr>
+                <td class="auto-style5"></td>
+                <td class="auto-style4"></td>
+                <td class="auto-style3"></td>
+                <td class="auto-style6">
+                    <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%#Eval("id") %>' CommandName="komisyonSec"> <img src="~/Content/img/_LayoutPersonel/aktif.png" style="width:20px;height:20px" /></asp:LinkButton>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+    

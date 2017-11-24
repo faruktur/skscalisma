@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@section modals{
+    <div class="modal fade draggable-modal ui-draggable" id="createModal" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ui-draggable-handle">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Yeni bölüm oluştur</h4>
+                </div>
+                @{
+                    if ((bool)ViewBag.birim)
+                    {
+                        @Html.Partial("_Create", new SksCalisma.Models.Bolum() { birimID = ViewBag.birimID })
+                    }
+                }
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade draggable-modal ui-draggable" id="editModal" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ui-draggable-handle">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Düzenle</h4>
+                </div>
+                <div id="editdiv"></div>
+                <div id="editloading" class="col-sm-offset-4">
+                    <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade draggable-modal ui-draggable" id="deleteModal" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ui-draggable-handle">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Sil</h4>
+                </div>
+                <div id="deletediv"></div>
+                <div id="deleteloading" class="col-sm-offset-4">
+                    <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade draggable-modal ui-draggable" id="kontModal" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ui-draggable-handle">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Kontenjan Belirle</h4>
+                </div>
+                <div id="kontdiv"></div>
+                <div id="kontloading" class="col-sm-offset-4">
+                    <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+}
+<div class="container">
+    <div class="form-group form-md-line-input birimSec">
+        @Html.DropDownList("birimID", (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.birimler, "Birim", htmlAttributes: new { @class = "form-control select2 col-sm-8" })
+        
+    </div>
+</div>
+<div class="container" style="margin-top:10px;">
+    @{
+        if ((bool)ViewBag.birim)
+        {
+            @Html.Partial("_List", (List<SksCalisma.Models.Bolum>)ViewBag.bolumler)
+        }
+        else
+        {
+            <div id="message">
+                <h2>Lütfen birim seçin.</h2>
+            </div>
+        }
+    }
+</div>
+@section scripts{
+    <script>
+        $('.birimSec select').change( function () {
+            window.location.pathname = "Admin/Bolum/Index/" + $(this).val();
+        })
+    </script>
+}

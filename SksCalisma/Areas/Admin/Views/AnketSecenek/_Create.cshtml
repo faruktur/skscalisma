@@ -1,0 +1,30 @@
+﻿@model SksCalisma.Models.AnketSecenek
+
+@using (Html.BeginForm("Create", "AnketSecenek", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-body">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.anketSoruID)
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.anketSecenekIcerik, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.anketSecenekIcerik, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.anketSecenekIcerik, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.anketSecenekPuan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.anketSecenekPuan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.anketSecenekPuan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Kaydet" class="btn green" />
+    </div>
+}

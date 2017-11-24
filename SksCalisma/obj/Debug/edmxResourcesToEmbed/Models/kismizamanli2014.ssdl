@@ -1,0 +1,1502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Models.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AileSgk">
+    <Key>
+      <PropertyRef Name="aileSgkID" />
+    </Key>
+    <Property Name="aileSgkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aileSgkAd" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="aileSgkKod" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnketCevap">
+    <Key>
+      <PropertyRef Name="anketCevapID" />
+    </Key>
+    <Property Name="anketCevapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullaniciID" Type="int" Nullable="false" />
+    <Property Name="anketSecenekID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnketSecenek">
+    <Key>
+      <PropertyRef Name="anketSecenekID" />
+    </Key>
+    <Property Name="anketSecenekID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="anketSoruID" Type="int" Nullable="false" />
+    <Property Name="anketSecenekIcerik" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="anketSecenekPuan" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AnketSoru">
+    <Key>
+      <PropertyRef Name="anketSoruID" />
+    </Key>
+    <Property Name="anketSoruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="anketSoruIcerik" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="anketSoruNo" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AsilListe">
+    <Key>
+      <PropertyRef Name="asilListeID" />
+    </Key>
+    <Property Name="asilListeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birimKontejyanID" Type="int" Nullable="false" />
+    <Property Name="bolumKontejyanID" Type="int" Nullable="false" />
+    <Property Name="ogrenciID" Type="int" Nullable="false" />
+    <Property Name="personelID" Type="int" Nullable="false" />
+    <Property Name="asilListeEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="asilListeGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Birim">
+    <Key>
+      <PropertyRef Name="birimID" />
+    </Key>
+    <Property Name="birimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birimAd" Type="nchar" MaxLength="60" Nullable="false" />
+    <Property Name="birimTipID" Type="int" Nullable="false" />
+    <Property Name="birimKontejyanID" Type="int" Nullable="false" />
+    <Property Name="birimAkademikCalisan" Type="int" />
+    <Property Name="birimIdariCalisan" Type="int" />
+    <Property Name="birimEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="birimGuncellemTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BirimFiyat">
+    <Key>
+      <PropertyRef Name="birimFiyatID" />
+    </Key>
+    <Property Name="birimFiyatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="calismaTipID" Type="int" Nullable="false" />
+    <Property Name="birimFiyati" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BirimKontejyan">
+    <Key>
+      <PropertyRef Name="birimKontejyanID" />
+    </Key>
+    <Property Name="birimKontejyanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birimKontejyanAkademi" Type="smallint" Nullable="false" />
+    <Property Name="birimKontejyanIdari" Type="smallint" Nullable="false" />
+    <Property Name="birimKontejyanEkAkademi" Type="smallint" Nullable="false" />
+    <Property Name="birimKontejyanEkIdari" Type="smallint" Nullable="false" />
+    <Property Name="birimKontejyanEkAkademiNot" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="birimKontejyanEkIdariNot" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="birimKontejyanEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="birimKontejyanGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BirimTip">
+    <Key>
+      <PropertyRef Name="birimTipID" />
+    </Key>
+    <Property Name="birimTipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birimTipAd" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="birimTurID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BirimTur">
+    <Key>
+      <PropertyRef Name="birimTurID" />
+    </Key>
+    <Property Name="birimTurID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birimTurAd" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Bolum">
+    <Key>
+      <PropertyRef Name="bolumID" />
+    </Key>
+    <Property Name="bolumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bolumAd" Type="nchar" MaxLength="70" Nullable="false" />
+    <Property Name="birimID" Type="int" Nullable="false" />
+    <Property Name="bolumKontejyanID" Type="int" Nullable="false" />
+    <Property Name="bolumAkademikCalisan" Type="int" Nullable="false" />
+    <Property Name="bolumIdariCalisan" Type="int" Nullable="false" />
+    <Property Name="bolumEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="bolumGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="BolumKontejyan">
+    <Key>
+      <PropertyRef Name="bolumKontejyanID" />
+    </Key>
+    <Property Name="bolumKontejyanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="bolumKontejyanAkademi" Type="smallint" Nullable="false" />
+    <Property Name="bolumKontejyanIdari" Type="smallint" Nullable="false" />
+    <Property Name="bolumKontejyanEkAkademi" Type="smallint" Nullable="false" />
+    <Property Name="bolumKontejyanEkIdari" Type="smallint" Nullable="false" />
+    <Property Name="bolumKontejyanAkademiNot" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="bolumKontejyanIdarıNot" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="bolumKontejyanEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="bolumKontejyanGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CalisanYoklama">
+    <Key>
+      <PropertyRef Name="calisanYoklamaID" />
+    </Key>
+    <Property Name="calisanYoklamaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="calismaYeriID" Type="int" Nullable="false" />
+    <Property Name="calisanYoklamaGun" Type="datetime" Nullable="false" />
+    <Property Name="calisanYoklamaSaat" Type="numeric" Precision="3" Scale="1" Nullable="false" />
+    <Property Name="calisanEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="calisanGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CalismaTip">
+    <Key>
+      <PropertyRef Name="calismaTipID" />
+    </Key>
+    <Property Name="calismaTipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="calismaTipAd" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CalismaYeri">
+    <Key>
+      <PropertyRef Name="calismaYeriID" />
+    </Key>
+    <Property Name="calismaYeriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birimID" Type="int" Nullable="false" />
+    <Property Name="bolumID" Type="int" Nullable="false" />
+    <Property Name="calismaTipID" Type="int" Nullable="false" />
+    <Property Name="ogrenciID" Type="int" Nullable="false" />
+    <Property Name="calismaYeriSgkGirisTarih" Type="datetime" Nullable="false" />
+    <Property Name="calismaYeriSgkCikisTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CikanKisi">
+    <Key>
+      <PropertyRef Name="cikanKisiID" />
+    </Key>
+    <Property Name="cikanKisiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ogrenciID" Type="int" Nullable="false" />
+    <Property Name="bolumID" Type="int" Nullable="false" />
+    <Property Name="birimID" Type="int" Nullable="false" />
+    <Property Name="calismaYeriID" Type="int" Nullable="false" />
+    <Property Name="personelID" Type="int" Nullable="false" />
+    <Property Name="cikanKisiAciklama" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="cikanKisiEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="cikanKisiGuncellemeTarih" Type="datetime" />
+    <Property Name="cikanKisiGorulmeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EklenenKisi">
+    <Key>
+      <PropertyRef Name="eklenenKisiID" />
+    </Key>
+    <Property Name="eklenenKisiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birimID" Type="int" Nullable="false" />
+    <Property Name="bolumID" Type="int" Nullable="false" />
+    <Property Name="eklenenKisiTC" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="eklenenKisiOgrenciNo" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="eklenenKisiAd" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="eklenenKisiSoyad" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="personelID" Type="int" Nullable="false" />
+    <Property Name="eklenenKisiAciklama" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="eklenenKisiEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="eklenenKisiGuncellemeTarih" Type="datetime" />
+    <Property Name="eklenenKisiGorulmeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EngelDurum">
+    <Key>
+      <PropertyRef Name="engelDurumID" />
+    </Key>
+    <Property Name="engelDurumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="engelDurumIcerik" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="engelDurumOran" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="engelDurumIndirilen" Type="numeric" Precision="8" Scale="3" Nullable="false" />
+    <Property Name="engelDurumSgkPrim" Type="numeric" Precision="8" Scale="3" Nullable="false" />
+    <Property Name="engelDurumIssizlikFon" Type="numeric" Precision="8" Scale="3" Nullable="false" />
+    <Property Name="engelDurumEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="engelDurumGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Ilan">
+    <Key>
+      <PropertyRef Name="ilanID" />
+    </Key>
+    <Property Name="ilanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personelID" Type="int" Nullable="false" />
+    <Property Name="calismaTipID" Type="int" Nullable="false" />
+    <Property Name="ilanMetni" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ilanEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="ilanGüncellemeTarih" Type="datetime" />
+    <Property Name="ilanCalisanSayisi" Type="smallint" Nullable="false" />
+    <Property Name="ogrenimTipID" Type="int" Nullable="false" />
+    <Property Name="ilanCalisanGun" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="IsTakip">
+    <Key>
+      <PropertyRef Name="isTakipID" />
+    </Key>
+    <Property Name="isTakipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="isTakipBaslik" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="isTakipIcerik" Type="nchar" MaxLength="250" Nullable="false" />
+    <Property Name="isTakipEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="isTakipGuncellemeTarih" Type="datetime" />
+    <Property Name="isTakipBitirmeTarih" Type="datetime" />
+    <Property Name="isTakipKontrol" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="ogrenciID" Type="int" Nullable="false" />
+    <Property Name="personelID" Type="int" Nullable="false" />
+    <Property Name="isTakipSonuc" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Kullanici">
+    <Key>
+      <PropertyRef Name="kullaniciID" />
+    </Key>
+    <Property Name="kullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullaniciMail" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="kullaniciSifre" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="kullaniciTipID" Type="int" Nullable="false" />
+    <Property Name="kullaniciEklemeTarihi" Type="datetime" Nullable="false" />
+    <Property Name="kullaniciGuncellemeTarihi" Type="datetime" />
+  </EntityType>
+  <EntityType Name="KullaniciTip">
+    <Key>
+      <PropertyRef Name="kullaniciTipID" />
+    </Key>
+    <Property Name="kullaniciTipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kullaniciTipAd" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="kullaniciTipEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="kullaniciTipGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Muhasebe">
+    <Key>
+      <PropertyRef Name="muhasebeID" />
+    </Key>
+    <Property Name="muhasebeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="muhasebeAsgariBrut" Type="money" Nullable="false" />
+    <Property Name="muhasebeAsgariNet" Type="money" Nullable="false" />
+    <Property Name="muhasebeAsgariGun" Type="money" Nullable="false" />
+    <Property Name="muhasebeGelirVergiOran" Type="numeric" Precision="6" Scale="3" Nullable="false" />
+    <Property Name="muhasebeDamgaVergiOran" Type="numeric" Precision="6" Scale="3" Nullable="false" />
+    <Property Name="muhasebeGSS43Oran" Type="numeric" Precision="6" Scale="3" Nullable="false" />
+    <Property Name="muhasebeAzamiGunCalisma" Type="numeric" Precision="3" Scale="1" Nullable="false" />
+    <Property Name="muhasebeEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="muhasebeGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Mulakat">
+    <Key>
+      <PropertyRef Name="mulakatID" />
+    </Key>
+    <Property Name="mulakatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ilanID" Type="int" Nullable="false" />
+    <Property Name="birimID" Type="int" Nullable="false" />
+    <Property Name="bolumID" Type="int" Nullable="false" />
+    <Property Name="mulakatEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="mulakatGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MulakatSoru">
+    <Key>
+      <PropertyRef Name="mulakatSoruID" />
+    </Key>
+    <Property Name="mulakatSoruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mulakatSoruIcerik" Type="nchar" MaxLength="350" Nullable="false" />
+    <Property Name="mulakatID" Type="int" Nullable="false" />
+    <Property Name="mulakatSoruNo" Type="tinyint" Nullable="false" />
+    <Property Name="mulakatSoruEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="mulakatSoruGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Ogrenci">
+    <Key>
+      <PropertyRef Name="ogrenciID" />
+    </Key>
+    <Property Name="kullaniciID" Type="int" Nullable="false" />
+    <Property Name="ogrenciTC" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="ogrenciNumara" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="ogrenciAd" Type="nchar" MaxLength="60" Nullable="false" />
+    <Property Name="ogrenciSoyad" Type="nchar" MaxLength="60" Nullable="false" />
+    <Property Name="ogrenciDogumTarih" Type="datetime" Nullable="false" />
+    <Property Name="ogrenciMail" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="ogrenciTelNo" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="ogrenciIBAN" Type="nchar" MaxLength="26" Nullable="false" />
+    <Property Name="ogrenciNotOrt" Type="numeric" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="okulID" Type="int" Nullable="false" />
+    <Property Name="okulBolumID" Type="int" Nullable="false" />
+    <Property Name="sinifID" Type="int" Nullable="false" />
+    <Property Name="ogrenimTurID" Type="int" Nullable="false" />
+    <Property Name="ogrenimTipID" Type="int" Nullable="false" />
+    <Property Name="calismaTipID" Type="int" Nullable="false" />
+    <Property Name="ogrenciAktiflik" Type="bit" Nullable="false" />
+    <Property Name="aileSgkID" Type="int" Nullable="false" />
+    <Property Name="ogrenciAnketPuan" Type="int" Nullable="false" />
+    <Property Name="engelDurumID" Type="int" Nullable="false" />
+    <Property Name="ogrenciEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="ogrenciGuncellemeTarih" Type="datetime" />
+    <Property Name="ogrenciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OgrenciBasvuru">
+    <Key>
+      <PropertyRef Name="ogrenciBasvuruID" />
+    </Key>
+    <Property Name="ogrenciBasvuruID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ogrenciID" Type="int" Nullable="false" />
+    <Property Name="ogrenciBasvuruSayisi" Type="tinyint" Nullable="false" />
+    <Property Name="ilanID" Type="int" Nullable="false" />
+    <Property Name="ogrenciBasvuruMulakatPuan" Type="smallint" Nullable="false" />
+    <Property Name="ogrenciBasvuruEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="ogrenciBasvuruGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OgrenciCalisma">
+    <Key>
+      <PropertyRef Name="ogrenciCalismaID" />
+    </Key>
+    <Property Name="ogrenciCalismaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ogrenciID" Type="int" Nullable="false" />
+    <Property Name="calismaYeriID" Type="int" Nullable="false" />
+    <Property Name="ogrenciCalismaSaat" Type="tinyint" Nullable="false" />
+    <Property Name="ogrenciCalismaGun" Type="tinyint" Nullable="false" />
+    <Property Name="birimFiyati" Type="money" Nullable="false" />
+    <Property Name="ogrenimTipID" Type="int" Nullable="false" />
+    <Property Name="ogrenciCalismaAsgariGunBrut" Type="money" Nullable="false" />
+    <Property Name="ogrenciCalismaBrutUcret1" Type="money" Nullable="false" />
+    <Property Name="ogrenciCalismaSgkPrimHesabi" Type="money" Nullable="false" />
+    <Property Name="yasalKesintiID" Type="int" Nullable="false" />
+    <Property Name="ogrenciCalismaDamgaVergisi" Type="money" Nullable="false" />
+    <Property Name="ogrenciCalismaGelirVergisi" Type="money" Nullable="false" />
+    <Property Name="aileSgkKod" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="ogrenciCalismaGSS43Prim" Type="money" Nullable="false" />
+    <Property Name="ogrenciCalismaEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="ogrenciCalismaAitOlduguAy" Type="datetime" Nullable="false" />
+    <Property Name="ogrenciCalismaNetUcret" Type="money" Nullable="false" />
+    <Property Name="engelDurumID" Type="int" Nullable="false" />
+    <Property Name="ogrenciCalismaEngelBrut1" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OgrenimTip">
+    <Key>
+      <PropertyRef Name="ogrenimTipID" />
+    </Key>
+    <Property Name="ogrenimTipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ogrenimTipAd" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OgrenimTur">
+    <Key>
+      <PropertyRef Name="ogrenimTurID" />
+    </Key>
+    <Property Name="ogrenimTurID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ogrenimTurAd" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Okul">
+    <Key>
+      <PropertyRef Name="okulID" />
+    </Key>
+    <Property Name="okulID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="okulAd" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="okulTipID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OkulBolum">
+    <Key>
+      <PropertyRef Name="okulBolumID" />
+    </Key>
+    <Property Name="okulBolumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="okulBolumAd" Type="nchar" MaxLength="70" Nullable="false" />
+    <Property Name="okulID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OkulTip">
+    <Key>
+      <PropertyRef Name="okulTipID" />
+    </Key>
+    <Property Name="okulTipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="okulTipAd" Type="nchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Personel">
+    <Key>
+      <PropertyRef Name="personelID" />
+    </Key>
+    <Property Name="kullaniciID" Type="int" Nullable="false" />
+    <Property Name="personelTC" Type="nchar" MaxLength="11" Nullable="false" />
+    <Property Name="personelAd" Type="nchar" MaxLength="60" Nullable="false" />
+    <Property Name="personelSoyad" Type="nchar" MaxLength="60" Nullable="false" />
+    <Property Name="personelDahiliNo" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="personelUnvan" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="birimID" Type="int" Nullable="false" />
+    <Property Name="bolumID" Type="int" Nullable="false" />
+    <Property Name="personelEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="personelGuncellemeTarih" Type="datetime" />
+    <Property Name="personelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonelYetki">
+    <Key>
+      <PropertyRef Name="personelYetkiID" />
+    </Key>
+    <Property Name="personelYetkiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personelID" Type="int" Nullable="false" />
+    <Property Name="yetkiTipID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PuantajAyBelirle">
+    <Key>
+      <PropertyRef Name="puantajAyBelirleID" />
+    </Key>
+    <Property Name="puantajAyBelirleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="puantajAyBelirleAd" Type="bit" />
+  </EntityType>
+  <EntityType Name="PuantajGirmeSure">
+    <Key>
+      <PropertyRef Name="puantajGirmeSureID" />
+    </Key>
+    <Property Name="puantajGirmeSureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="puantajGirmeSuresi" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PuantajYetki">
+    <Key>
+      <PropertyRef Name="puantajYetkiID" />
+    </Key>
+    <Property Name="puantajYetkiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="personelID" Type="int" Nullable="false" />
+    <Property Name="puantajYetkiAd" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResmiTatilGun">
+    <Key>
+      <PropertyRef Name="resmiTatilGunID" />
+    </Key>
+    <Property Name="resmiTatilGunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="resmiTatilGunTarih" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sinif">
+    <Key>
+      <PropertyRef Name="sinifID" />
+    </Key>
+    <Property Name="sinifID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sinifAd" Type="nchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="image" />
+  </EntityType>
+  <EntityType Name="YasalKesinti">
+    <Key>
+      <PropertyRef Name="yasalKesintiID" />
+    </Key>
+    <Property Name="yasalKesintiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ogrenciID" Type="int" Nullable="false" />
+    <Property Name="yasalKesintiIcerik" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="yasalKesintiOran" Type="numeric" Precision="8" Scale="3" Nullable="false" />
+    <Property Name="yasalKesintiBorc" Type="money" Nullable="false" />
+    <Property Name="yasalKesintiKalanBorc" Type="money" Nullable="false" />
+    <Property Name="yasalKesintiEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="yasalKesintiGuncellemeTarih" Type="datetime" />
+    <Property Name="yasalKesintiBitisTarih" Type="datetime" />
+  </EntityType>
+  <EntityType Name="YetkiTip">
+    <Key>
+      <PropertyRef Name="yetkiTipID" />
+    </Key>
+    <Property Name="yetkiTipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="yetkiTipAd" Type="nchar" MaxLength="25" Nullable="false" />
+    <Property Name="yetkiTipEklemeTarih" Type="datetime" Nullable="false" />
+    <Property Name="yetkiTipGuncellemeTarih" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_AnketCevap_AnketSecenek">
+    <End Role="AnketSecenek" Type="Self.AnketSecenek" Multiplicity="1" />
+    <End Role="AnketCevap" Type="Self.AnketCevap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnketSecenek">
+        <PropertyRef Name="anketSecenekID" />
+      </Principal>
+      <Dependent Role="AnketCevap">
+        <PropertyRef Name="anketSecenekID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnketCevap_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="AnketCevap" Type="Self.AnketCevap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="AnketCevap">
+        <PropertyRef Name="kullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnketSecenek_AnketSoru">
+    <End Role="AnketSoru" Type="Self.AnketSoru" Multiplicity="1" />
+    <End Role="AnketSecenek" Type="Self.AnketSecenek" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AnketSoru">
+        <PropertyRef Name="anketSoruID" />
+      </Principal>
+      <Dependent Role="AnketSecenek">
+        <PropertyRef Name="anketSoruID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsilListe_BirimKontejyan">
+    <End Role="BirimKontejyan" Type="Self.BirimKontejyan" Multiplicity="1" />
+    <End Role="AsilListe" Type="Self.AsilListe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BirimKontejyan">
+        <PropertyRef Name="birimKontejyanID" />
+      </Principal>
+      <Dependent Role="AsilListe">
+        <PropertyRef Name="birimKontejyanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsilListe_BolumKontejyan">
+    <End Role="BolumKontejyan" Type="Self.BolumKontejyan" Multiplicity="1" />
+    <End Role="AsilListe" Type="Self.AsilListe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BolumKontejyan">
+        <PropertyRef Name="bolumKontejyanID" />
+      </Principal>
+      <Dependent Role="AsilListe">
+        <PropertyRef Name="bolumKontejyanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsilListe_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="AsilListe" Type="Self.AsilListe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="AsilListe">
+        <PropertyRef Name="ogrenciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AsilListe_Kullanici1">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="AsilListe" Type="Self.AsilListe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="AsilListe">
+        <PropertyRef Name="personelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Birim_BirimKontejyan">
+    <End Role="BirimKontejyan" Type="Self.BirimKontejyan" Multiplicity="1" />
+    <End Role="Birim" Type="Self.Birim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BirimKontejyan">
+        <PropertyRef Name="birimKontejyanID" />
+      </Principal>
+      <Dependent Role="Birim">
+        <PropertyRef Name="birimKontejyanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Birim_BirimTip">
+    <End Role="BirimTip" Type="Self.BirimTip" Multiplicity="1" />
+    <End Role="Birim" Type="Self.Birim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BirimTip">
+        <PropertyRef Name="birimTipID" />
+      </Principal>
+      <Dependent Role="Birim">
+        <PropertyRef Name="birimTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BirimFiyat_CalismaTip">
+    <End Role="CalismaTip" Type="Self.CalismaTip" Multiplicity="1" />
+    <End Role="BirimFiyat" Type="Self.BirimFiyat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalismaTip">
+        <PropertyRef Name="calismaTipID" />
+      </Principal>
+      <Dependent Role="BirimFiyat">
+        <PropertyRef Name="calismaTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BirimTip_BirimTur">
+    <End Role="BirimTur" Type="Self.BirimTur" Multiplicity="1" />
+    <End Role="BirimTip" Type="Self.BirimTip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BirimTur">
+        <PropertyRef Name="birimTurID" />
+      </Principal>
+      <Dependent Role="BirimTip">
+        <PropertyRef Name="birimTurID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bolum_Birim">
+    <End Role="Birim" Type="Self.Birim" Multiplicity="1" />
+    <End Role="Bolum" Type="Self.Bolum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birim">
+        <PropertyRef Name="birimID" />
+      </Principal>
+      <Dependent Role="Bolum">
+        <PropertyRef Name="birimID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bolum_BolumKontejyan">
+    <End Role="BolumKontejyan" Type="Self.BolumKontejyan" Multiplicity="1" />
+    <End Role="Bolum" Type="Self.Bolum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BolumKontejyan">
+        <PropertyRef Name="bolumKontejyanID" />
+      </Principal>
+      <Dependent Role="Bolum">
+        <PropertyRef Name="bolumKontejyanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalisanYoklama_CalismaYeri">
+    <End Role="CalismaYeri" Type="Self.CalismaYeri" Multiplicity="1" />
+    <End Role="CalisanYoklama" Type="Self.CalisanYoklama" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalismaYeri">
+        <PropertyRef Name="calismaYeriID" />
+      </Principal>
+      <Dependent Role="CalisanYoklama">
+        <PropertyRef Name="calismaYeriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalismaYeri_Birim">
+    <End Role="Birim" Type="Self.Birim" Multiplicity="1" />
+    <End Role="CalismaYeri" Type="Self.CalismaYeri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birim">
+        <PropertyRef Name="birimID" />
+      </Principal>
+      <Dependent Role="CalismaYeri">
+        <PropertyRef Name="birimID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalismaYeri_Bolum">
+    <End Role="Bolum" Type="Self.Bolum" Multiplicity="1" />
+    <End Role="CalismaYeri" Type="Self.CalismaYeri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolum">
+        <PropertyRef Name="bolumID" />
+      </Principal>
+      <Dependent Role="CalismaYeri">
+        <PropertyRef Name="bolumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalismaYeri_CalismaTip">
+    <End Role="CalismaTip" Type="Self.CalismaTip" Multiplicity="1" />
+    <End Role="CalismaYeri" Type="Self.CalismaYeri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalismaTip">
+        <PropertyRef Name="calismaTipID" />
+      </Principal>
+      <Dependent Role="CalismaYeri">
+        <PropertyRef Name="calismaTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalismaYeri_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="CalismaYeri" Type="Self.CalismaYeri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="CalismaYeri">
+        <PropertyRef Name="ogrenciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CikanKisi_Birim">
+    <End Role="Birim" Type="Self.Birim" Multiplicity="1" />
+    <End Role="CikanKisi" Type="Self.CikanKisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birim">
+        <PropertyRef Name="birimID" />
+      </Principal>
+      <Dependent Role="CikanKisi">
+        <PropertyRef Name="birimID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CikanKisi_Bolum">
+    <End Role="Bolum" Type="Self.Bolum" Multiplicity="1" />
+    <End Role="CikanKisi" Type="Self.CikanKisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolum">
+        <PropertyRef Name="bolumID" />
+      </Principal>
+      <Dependent Role="CikanKisi">
+        <PropertyRef Name="bolumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CikanKisi_CalismaYeri">
+    <End Role="CalismaYeri" Type="Self.CalismaYeri" Multiplicity="1" />
+    <End Role="CikanKisi" Type="Self.CikanKisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalismaYeri">
+        <PropertyRef Name="calismaYeriID" />
+      </Principal>
+      <Dependent Role="CikanKisi">
+        <PropertyRef Name="calismaYeriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CikanKisi_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="CikanKisi" Type="Self.CikanKisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="CikanKisi">
+        <PropertyRef Name="ogrenciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CikanKisi_Kullanici1">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="CikanKisi" Type="Self.CikanKisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="CikanKisi">
+        <PropertyRef Name="personelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EklenenKisi_Birim">
+    <End Role="Birim" Type="Self.Birim" Multiplicity="1" />
+    <End Role="EklenenKisi" Type="Self.EklenenKisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birim">
+        <PropertyRef Name="birimID" />
+      </Principal>
+      <Dependent Role="EklenenKisi">
+        <PropertyRef Name="birimID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EklenenKisi_Bolum">
+    <End Role="Bolum" Type="Self.Bolum" Multiplicity="1" />
+    <End Role="EklenenKisi" Type="Self.EklenenKisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolum">
+        <PropertyRef Name="bolumID" />
+      </Principal>
+      <Dependent Role="EklenenKisi">
+        <PropertyRef Name="bolumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EklenenKisi_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="EklenenKisi" Type="Self.EklenenKisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="EklenenKisi">
+        <PropertyRef Name="personelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ilan_CalismaTip">
+    <End Role="CalismaTip" Type="Self.CalismaTip" Multiplicity="1" />
+    <End Role="Ilan" Type="Self.Ilan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalismaTip">
+        <PropertyRef Name="calismaTipID" />
+      </Principal>
+      <Dependent Role="Ilan">
+        <PropertyRef Name="calismaTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ilan_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Ilan" Type="Self.Ilan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="Ilan">
+        <PropertyRef Name="personelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ilan_OgrenimTip">
+    <End Role="OgrenimTip" Type="Self.OgrenimTip" Multiplicity="1" />
+    <End Role="Ilan" Type="Self.Ilan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenimTip">
+        <PropertyRef Name="ogrenimTipID" />
+      </Principal>
+      <Dependent Role="Ilan">
+        <PropertyRef Name="ogrenimTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IsTakip_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="IsTakip" Type="Self.IsTakip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="IsTakip">
+        <PropertyRef Name="ogrenciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IsTakip_Kullanici1">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="IsTakip" Type="Self.IsTakip" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="IsTakip">
+        <PropertyRef Name="personelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kullanici_KullaniciTip">
+    <End Role="KullaniciTip" Type="Self.KullaniciTip" Multiplicity="1" />
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KullaniciTip">
+        <PropertyRef Name="kullaniciTipID" />
+      </Principal>
+      <Dependent Role="Kullanici">
+        <PropertyRef Name="kullaniciTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mulakat_Birim">
+    <End Role="Birim" Type="Self.Birim" Multiplicity="1" />
+    <End Role="Mulakat" Type="Self.Mulakat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birim">
+        <PropertyRef Name="birimID" />
+      </Principal>
+      <Dependent Role="Mulakat">
+        <PropertyRef Name="ilanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mulakat_Bolum">
+    <End Role="Bolum" Type="Self.Bolum" Multiplicity="1" />
+    <End Role="Mulakat" Type="Self.Mulakat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolum">
+        <PropertyRef Name="bolumID" />
+      </Principal>
+      <Dependent Role="Mulakat">
+        <PropertyRef Name="bolumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mulakat_Ilan">
+    <End Role="Ilan" Type="Self.Ilan" Multiplicity="1" />
+    <End Role="Mulakat" Type="Self.Mulakat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ilan">
+        <PropertyRef Name="ilanID" />
+      </Principal>
+      <Dependent Role="Mulakat">
+        <PropertyRef Name="ilanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MulakatSoru_Mulakat">
+    <End Role="Mulakat" Type="Self.Mulakat" Multiplicity="1" />
+    <End Role="MulakatSoru" Type="Self.MulakatSoru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mulakat">
+        <PropertyRef Name="mulakatID" />
+      </Principal>
+      <Dependent Role="MulakatSoru">
+        <PropertyRef Name="mulakatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_AileSgk">
+    <End Role="AileSgk" Type="Self.AileSgk" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AileSgk">
+        <PropertyRef Name="aileSgkID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="aileSgkID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_EngelDurum">
+    <End Role="EngelDurum" Type="Self.EngelDurum" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EngelDurum">
+        <PropertyRef Name="engelDurumID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="engelDurumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="kullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_Kullanici1">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="kullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_OgrenimTip">
+    <End Role="OgrenimTip" Type="Self.OgrenimTip" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenimTip">
+        <PropertyRef Name="ogrenimTipID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="ogrenimTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_OgrenimTur">
+    <End Role="OgrenimTur" Type="Self.OgrenimTur" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenimTur">
+        <PropertyRef Name="ogrenimTurID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="ogrenimTurID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_Okul">
+    <End Role="Okul" Type="Self.Okul" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Okul">
+        <PropertyRef Name="okulID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="okulID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_OkulBolum">
+    <End Role="OkulBolum" Type="Self.OkulBolum" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OkulBolum">
+        <PropertyRef Name="okulBolumID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="okulBolumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ogrenci_Sinif">
+    <End Role="Sinif" Type="Self.Sinif" Multiplicity="1" />
+    <End Role="Ogrenci" Type="Self.Ogrenci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sinif">
+        <PropertyRef Name="sinifID" />
+      </Principal>
+      <Dependent Role="Ogrenci">
+        <PropertyRef Name="sinifID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciBasvuru_Ilan">
+    <End Role="Ilan" Type="Self.Ilan" Multiplicity="1" />
+    <End Role="OgrenciBasvuru" Type="Self.OgrenciBasvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ilan">
+        <PropertyRef Name="ilanID" />
+      </Principal>
+      <Dependent Role="OgrenciBasvuru">
+        <PropertyRef Name="ilanID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciBasvuru_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="OgrenciBasvuru" Type="Self.OgrenciBasvuru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="OgrenciBasvuru">
+        <PropertyRef Name="ogrenciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciCalisma_CalismaYeri">
+    <End Role="CalismaYeri" Type="Self.CalismaYeri" Multiplicity="1" />
+    <End Role="OgrenciCalisma" Type="Self.OgrenciCalisma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CalismaYeri">
+        <PropertyRef Name="calismaYeriID" />
+      </Principal>
+      <Dependent Role="OgrenciCalisma">
+        <PropertyRef Name="calismaYeriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciCalisma_EngelDurum">
+    <End Role="EngelDurum" Type="Self.EngelDurum" Multiplicity="1" />
+    <End Role="OgrenciCalisma" Type="Self.OgrenciCalisma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EngelDurum">
+        <PropertyRef Name="engelDurumID" />
+      </Principal>
+      <Dependent Role="OgrenciCalisma">
+        <PropertyRef Name="engelDurumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciCalisma_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="OgrenciCalisma" Type="Self.OgrenciCalisma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="OgrenciCalisma">
+        <PropertyRef Name="ogrenciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciCalisma_OgrenimTip">
+    <End Role="OgrenimTip" Type="Self.OgrenimTip" Multiplicity="1" />
+    <End Role="OgrenciCalisma" Type="Self.OgrenciCalisma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OgrenimTip">
+        <PropertyRef Name="ogrenimTipID" />
+      </Principal>
+      <Dependent Role="OgrenciCalisma">
+        <PropertyRef Name="ogrenimTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OgrenciCalisma_YasalKesinti">
+    <End Role="YasalKesinti" Type="Self.YasalKesinti" Multiplicity="1" />
+    <End Role="OgrenciCalisma" Type="Self.OgrenciCalisma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YasalKesinti">
+        <PropertyRef Name="yasalKesintiID" />
+      </Principal>
+      <Dependent Role="OgrenciCalisma">
+        <PropertyRef Name="yasalKesintiID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Okul_OkulTip">
+    <End Role="OkulTip" Type="Self.OkulTip" Multiplicity="1" />
+    <End Role="Okul" Type="Self.Okul" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OkulTip">
+        <PropertyRef Name="okulTipID" />
+      </Principal>
+      <Dependent Role="Okul">
+        <PropertyRef Name="okulTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OkulBolum_Okul">
+    <End Role="Okul" Type="Self.Okul" Multiplicity="1" />
+    <End Role="OkulBolum" Type="Self.OkulBolum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Okul">
+        <PropertyRef Name="okulID" />
+      </Principal>
+      <Dependent Role="OkulBolum">
+        <PropertyRef Name="okulID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personel_Birim">
+    <End Role="Birim" Type="Self.Birim" Multiplicity="1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Birim">
+        <PropertyRef Name="birimID" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="birimID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personel_Bolum">
+    <End Role="Bolum" Type="Self.Bolum" Multiplicity="1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bolum">
+        <PropertyRef Name="bolumID" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="bolumID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personel_Kullanici1">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="kullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonelYetki_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="1" />
+    <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="personelID" />
+      </Principal>
+      <Dependent Role="PersonelYetki">
+        <PropertyRef Name="personelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PersonelYetki_YetkiTip">
+    <End Role="YetkiTip" Type="Self.YetkiTip" Multiplicity="1" />
+    <End Role="PersonelYetki" Type="Self.PersonelYetki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="YetkiTip">
+        <PropertyRef Name="yetkiTipID" />
+      </Principal>
+      <Dependent Role="PersonelYetki">
+        <PropertyRef Name="yetkiTipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PuantajYetki_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="PuantajYetki" Type="Self.PuantajYetki" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="PuantajYetki">
+        <PropertyRef Name="personelID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YasalKesinti_Kullanici">
+    <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+    <End Role="YasalKesinti" Type="Self.YasalKesinti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanici">
+        <PropertyRef Name="kullaniciID" />
+      </Principal>
+      <Dependent Role="YasalKesinti">
+        <PropertyRef Name="ogrenciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelsStoreContainer">
+    <EntitySet Name="AileSgk" EntityType="Self.AileSgk" store:Type="Tables" />
+    <EntitySet Name="AnketCevap" EntityType="Self.AnketCevap" store:Type="Tables" />
+    <EntitySet Name="AnketSecenek" EntityType="Self.AnketSecenek" store:Type="Tables" />
+    <EntitySet Name="AnketSoru" EntityType="Self.AnketSoru" store:Type="Tables" />
+    <EntitySet Name="AsilListe" EntityType="Self.AsilListe" store:Type="Tables" />
+    <EntitySet Name="Birim" EntityType="Self.Birim" store:Type="Tables" />
+    <EntitySet Name="BirimFiyat" EntityType="Self.BirimFiyat" store:Type="Tables" />
+    <EntitySet Name="BirimKontejyan" EntityType="Self.BirimKontejyan" store:Type="Tables" />
+    <EntitySet Name="BirimTip" EntityType="Self.BirimTip" store:Type="Tables" />
+    <EntitySet Name="BirimTur" EntityType="Self.BirimTur" store:Type="Tables" />
+    <EntitySet Name="Bolum" EntityType="Self.Bolum" store:Type="Tables" />
+    <EntitySet Name="BolumKontejyan" EntityType="Self.BolumKontejyan" store:Type="Tables" />
+    <EntitySet Name="CalisanYoklama" EntityType="Self.CalisanYoklama" store:Type="Tables" />
+    <EntitySet Name="CalismaTip" EntityType="Self.CalismaTip" store:Type="Tables" />
+    <EntitySet Name="CalismaYeri" EntityType="Self.CalismaYeri" store:Type="Tables" />
+    <EntitySet Name="CikanKisi" EntityType="Self.CikanKisi" store:Type="Tables" />
+    <EntitySet Name="EklenenKisi" EntityType="Self.EklenenKisi" store:Type="Tables" />
+    <EntitySet Name="EngelDurum" EntityType="Self.EngelDurum" store:Type="Tables" />
+    <EntitySet Name="Ilan" EntityType="Self.Ilan" store:Type="Tables" />
+    <EntitySet Name="IsTakip" EntityType="Self.IsTakip" store:Type="Tables" />
+    <EntitySet Name="Kullanici" EntityType="Self.Kullanici" store:Type="Tables" />
+    <EntitySet Name="KullaniciTip" EntityType="Self.KullaniciTip" store:Type="Tables" />
+    <EntitySet Name="Muhasebe" EntityType="Self.Muhasebe" store:Type="Tables" />
+    <EntitySet Name="Mulakat" EntityType="Self.Mulakat" store:Type="Tables" />
+    <EntitySet Name="MulakatSoru" EntityType="Self.MulakatSoru" store:Type="Tables" />
+    <EntitySet Name="Ogrenci" EntityType="Self.Ogrenci" store:Type="Tables" />
+    <EntitySet Name="OgrenciBasvuru" EntityType="Self.OgrenciBasvuru" store:Type="Tables" />
+    <EntitySet Name="OgrenciCalisma" EntityType="Self.OgrenciCalisma" store:Type="Tables" />
+    <EntitySet Name="OgrenimTip" EntityType="Self.OgrenimTip" store:Type="Tables" />
+    <EntitySet Name="OgrenimTur" EntityType="Self.OgrenimTur" store:Type="Tables" />
+    <EntitySet Name="Okul" EntityType="Self.Okul" store:Type="Tables" />
+    <EntitySet Name="OkulBolum" EntityType="Self.OkulBolum" store:Type="Tables" />
+    <EntitySet Name="OkulTip" EntityType="Self.OkulTip" store:Type="Tables" />
+    <EntitySet Name="Personel" EntityType="Self.Personel" store:Type="Tables" />
+    <EntitySet Name="PersonelYetki" EntityType="Self.PersonelYetki" store:Type="Tables" />
+    <EntitySet Name="PuantajAyBelirle" EntityType="Self.PuantajAyBelirle" store:Type="Tables" />
+    <EntitySet Name="PuantajGirmeSure" EntityType="Self.PuantajGirmeSure" store:Type="Tables" />
+    <EntitySet Name="PuantajYetki" EntityType="Self.PuantajYetki" store:Type="Tables" />
+    <EntitySet Name="ResmiTatilGun" EntityType="Self.ResmiTatilGun" store:Type="Tables" />
+    <EntitySet Name="Sinif" EntityType="Self.Sinif" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" />
+    <EntitySet Name="YasalKesinti" EntityType="Self.YasalKesinti" store:Type="Tables" />
+    <EntitySet Name="YetkiTip" EntityType="Self.YetkiTip" store:Type="Tables" />
+    <AssociationSet Name="FK_AnketCevap_AnketSecenek" Association="Self.FK_AnketCevap_AnketSecenek">
+      <End Role="AnketSecenek" EntitySet="AnketSecenek" />
+      <End Role="AnketCevap" EntitySet="AnketCevap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnketCevap_Kullanici" Association="Self.FK_AnketCevap_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="AnketCevap" EntitySet="AnketCevap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnketSecenek_AnketSoru" Association="Self.FK_AnketSecenek_AnketSoru">
+      <End Role="AnketSoru" EntitySet="AnketSoru" />
+      <End Role="AnketSecenek" EntitySet="AnketSecenek" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsilListe_BirimKontejyan" Association="Self.FK_AsilListe_BirimKontejyan">
+      <End Role="BirimKontejyan" EntitySet="BirimKontejyan" />
+      <End Role="AsilListe" EntitySet="AsilListe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsilListe_BolumKontejyan" Association="Self.FK_AsilListe_BolumKontejyan">
+      <End Role="BolumKontejyan" EntitySet="BolumKontejyan" />
+      <End Role="AsilListe" EntitySet="AsilListe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsilListe_Kullanici" Association="Self.FK_AsilListe_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="AsilListe" EntitySet="AsilListe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AsilListe_Kullanici1" Association="Self.FK_AsilListe_Kullanici1">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="AsilListe" EntitySet="AsilListe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Birim_BirimKontejyan" Association="Self.FK_Birim_BirimKontejyan">
+      <End Role="BirimKontejyan" EntitySet="BirimKontejyan" />
+      <End Role="Birim" EntitySet="Birim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Birim_BirimTip" Association="Self.FK_Birim_BirimTip">
+      <End Role="BirimTip" EntitySet="BirimTip" />
+      <End Role="Birim" EntitySet="Birim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BirimFiyat_CalismaTip" Association="Self.FK_BirimFiyat_CalismaTip">
+      <End Role="CalismaTip" EntitySet="CalismaTip" />
+      <End Role="BirimFiyat" EntitySet="BirimFiyat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BirimTip_BirimTur" Association="Self.FK_BirimTip_BirimTur">
+      <End Role="BirimTur" EntitySet="BirimTur" />
+      <End Role="BirimTip" EntitySet="BirimTip" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bolum_Birim" Association="Self.FK_Bolum_Birim">
+      <End Role="Birim" EntitySet="Birim" />
+      <End Role="Bolum" EntitySet="Bolum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bolum_BolumKontejyan" Association="Self.FK_Bolum_BolumKontejyan">
+      <End Role="BolumKontejyan" EntitySet="BolumKontejyan" />
+      <End Role="Bolum" EntitySet="Bolum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalisanYoklama_CalismaYeri" Association="Self.FK_CalisanYoklama_CalismaYeri">
+      <End Role="CalismaYeri" EntitySet="CalismaYeri" />
+      <End Role="CalisanYoklama" EntitySet="CalisanYoklama" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalismaYeri_Birim" Association="Self.FK_CalismaYeri_Birim">
+      <End Role="Birim" EntitySet="Birim" />
+      <End Role="CalismaYeri" EntitySet="CalismaYeri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalismaYeri_Bolum" Association="Self.FK_CalismaYeri_Bolum">
+      <End Role="Bolum" EntitySet="Bolum" />
+      <End Role="CalismaYeri" EntitySet="CalismaYeri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalismaYeri_CalismaTip" Association="Self.FK_CalismaYeri_CalismaTip">
+      <End Role="CalismaTip" EntitySet="CalismaTip" />
+      <End Role="CalismaYeri" EntitySet="CalismaYeri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalismaYeri_Kullanici" Association="Self.FK_CalismaYeri_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="CalismaYeri" EntitySet="CalismaYeri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CikanKisi_Birim" Association="Self.FK_CikanKisi_Birim">
+      <End Role="Birim" EntitySet="Birim" />
+      <End Role="CikanKisi" EntitySet="CikanKisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CikanKisi_Bolum" Association="Self.FK_CikanKisi_Bolum">
+      <End Role="Bolum" EntitySet="Bolum" />
+      <End Role="CikanKisi" EntitySet="CikanKisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CikanKisi_CalismaYeri" Association="Self.FK_CikanKisi_CalismaYeri">
+      <End Role="CalismaYeri" EntitySet="CalismaYeri" />
+      <End Role="CikanKisi" EntitySet="CikanKisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CikanKisi_Kullanici" Association="Self.FK_CikanKisi_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="CikanKisi" EntitySet="CikanKisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CikanKisi_Kullanici1" Association="Self.FK_CikanKisi_Kullanici1">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="CikanKisi" EntitySet="CikanKisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EklenenKisi_Birim" Association="Self.FK_EklenenKisi_Birim">
+      <End Role="Birim" EntitySet="Birim" />
+      <End Role="EklenenKisi" EntitySet="EklenenKisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EklenenKisi_Bolum" Association="Self.FK_EklenenKisi_Bolum">
+      <End Role="Bolum" EntitySet="Bolum" />
+      <End Role="EklenenKisi" EntitySet="EklenenKisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EklenenKisi_Kullanici" Association="Self.FK_EklenenKisi_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="EklenenKisi" EntitySet="EklenenKisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ilan_CalismaTip" Association="Self.FK_Ilan_CalismaTip">
+      <End Role="CalismaTip" EntitySet="CalismaTip" />
+      <End Role="Ilan" EntitySet="Ilan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ilan_Kullanici" Association="Self.FK_Ilan_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Ilan" EntitySet="Ilan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ilan_OgrenimTip" Association="Self.FK_Ilan_OgrenimTip">
+      <End Role="OgrenimTip" EntitySet="OgrenimTip" />
+      <End Role="Ilan" EntitySet="Ilan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IsTakip_Kullanici" Association="Self.FK_IsTakip_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="IsTakip" EntitySet="IsTakip" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IsTakip_Kullanici1" Association="Self.FK_IsTakip_Kullanici1">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="IsTakip" EntitySet="IsTakip" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kullanici_KullaniciTip" Association="Self.FK_Kullanici_KullaniciTip">
+      <End Role="KullaniciTip" EntitySet="KullaniciTip" />
+      <End Role="Kullanici" EntitySet="Kullanici" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mulakat_Birim" Association="Self.FK_Mulakat_Birim">
+      <End Role="Birim" EntitySet="Birim" />
+      <End Role="Mulakat" EntitySet="Mulakat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mulakat_Bolum" Association="Self.FK_Mulakat_Bolum">
+      <End Role="Bolum" EntitySet="Bolum" />
+      <End Role="Mulakat" EntitySet="Mulakat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mulakat_Ilan" Association="Self.FK_Mulakat_Ilan">
+      <End Role="Ilan" EntitySet="Ilan" />
+      <End Role="Mulakat" EntitySet="Mulakat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MulakatSoru_Mulakat" Association="Self.FK_MulakatSoru_Mulakat">
+      <End Role="Mulakat" EntitySet="Mulakat" />
+      <End Role="MulakatSoru" EntitySet="MulakatSoru" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_AileSgk" Association="Self.FK_Ogrenci_AileSgk">
+      <End Role="AileSgk" EntitySet="AileSgk" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_EngelDurum" Association="Self.FK_Ogrenci_EngelDurum">
+      <End Role="EngelDurum" EntitySet="EngelDurum" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_Kullanici" Association="Self.FK_Ogrenci_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_Kullanici1" Association="Self.FK_Ogrenci_Kullanici1">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_OgrenimTip" Association="Self.FK_Ogrenci_OgrenimTip">
+      <End Role="OgrenimTip" EntitySet="OgrenimTip" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_OgrenimTur" Association="Self.FK_Ogrenci_OgrenimTur">
+      <End Role="OgrenimTur" EntitySet="OgrenimTur" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_Okul" Association="Self.FK_Ogrenci_Okul">
+      <End Role="Okul" EntitySet="Okul" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_OkulBolum" Association="Self.FK_Ogrenci_OkulBolum">
+      <End Role="OkulBolum" EntitySet="OkulBolum" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ogrenci_Sinif" Association="Self.FK_Ogrenci_Sinif">
+      <End Role="Sinif" EntitySet="Sinif" />
+      <End Role="Ogrenci" EntitySet="Ogrenci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciBasvuru_Ilan" Association="Self.FK_OgrenciBasvuru_Ilan">
+      <End Role="Ilan" EntitySet="Ilan" />
+      <End Role="OgrenciBasvuru" EntitySet="OgrenciBasvuru" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciBasvuru_Kullanici" Association="Self.FK_OgrenciBasvuru_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="OgrenciBasvuru" EntitySet="OgrenciBasvuru" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciCalisma_CalismaYeri" Association="Self.FK_OgrenciCalisma_CalismaYeri">
+      <End Role="CalismaYeri" EntitySet="CalismaYeri" />
+      <End Role="OgrenciCalisma" EntitySet="OgrenciCalisma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciCalisma_EngelDurum" Association="Self.FK_OgrenciCalisma_EngelDurum">
+      <End Role="EngelDurum" EntitySet="EngelDurum" />
+      <End Role="OgrenciCalisma" EntitySet="OgrenciCalisma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciCalisma_Kullanici" Association="Self.FK_OgrenciCalisma_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="OgrenciCalisma" EntitySet="OgrenciCalisma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciCalisma_OgrenimTip" Association="Self.FK_OgrenciCalisma_OgrenimTip">
+      <End Role="OgrenimTip" EntitySet="OgrenimTip" />
+      <End Role="OgrenciCalisma" EntitySet="OgrenciCalisma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OgrenciCalisma_YasalKesinti" Association="Self.FK_OgrenciCalisma_YasalKesinti">
+      <End Role="YasalKesinti" EntitySet="YasalKesinti" />
+      <End Role="OgrenciCalisma" EntitySet="OgrenciCalisma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Okul_OkulTip" Association="Self.FK_Okul_OkulTip">
+      <End Role="OkulTip" EntitySet="OkulTip" />
+      <End Role="Okul" EntitySet="Okul" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OkulBolum_Okul" Association="Self.FK_OkulBolum_Okul">
+      <End Role="Okul" EntitySet="Okul" />
+      <End Role="OkulBolum" EntitySet="OkulBolum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personel_Birim" Association="Self.FK_Personel_Birim">
+      <End Role="Birim" EntitySet="Birim" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personel_Bolum" Association="Self.FK_Personel_Bolum">
+      <End Role="Bolum" EntitySet="Bolum" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personel_Kullanici1" Association="Self.FK_Personel_Kullanici1">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonelYetki_Personel" Association="Self.FK_PersonelYetki_Personel">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="PersonelYetki" EntitySet="PersonelYetki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PersonelYetki_YetkiTip" Association="Self.FK_PersonelYetki_YetkiTip">
+      <End Role="YetkiTip" EntitySet="YetkiTip" />
+      <End Role="PersonelYetki" EntitySet="PersonelYetki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PuantajYetki_Kullanici" Association="Self.FK_PuantajYetki_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="PuantajYetki" EntitySet="PuantajYetki" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YasalKesinti_Kullanici" Association="Self.FK_YasalKesinti_Kullanici">
+      <End Role="Kullanici" EntitySet="Kullanici" />
+      <End Role="YasalKesinti" EntitySet="YasalKesinti" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

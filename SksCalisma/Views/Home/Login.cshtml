@@ -1,0 +1,120 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="tr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Kismi Zamanlı | Kullanıcı Giriş</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/simple-line-icons.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/uniform.default.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-switch.min.css" rel="stylesheet" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="~/Content/css/select2.css" rel="stylesheet" />
+    <link href="~/Content/css/select2-bootstrap.min.css" rel="stylesheet" />
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+
+    <link href="~/Content/css/components.min.css" rel="stylesheet" />
+    <link href="~/Content/css/plugins.min.css" rel="stylesheet" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="~/Content/css/login.min.css" rel="stylesheet" />
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <!-- END THEME LAYOUT STYLES -->
+</head>
+<!-- END HEAD -->
+<body class=" login">
+    <!-- BEGIN LOGO -->
+    <div class="logo">
+        <a href="~/Home/Index">
+            <img src="~/Content/img/_LayoutPersonel/logo2.png" alt="" />
+        </a>
+    </div>
+    <!-- END LOGO -->
+    <!-- BEGIN LOGIN -->
+    <div class="content">
+        <!-- BEGIN LOGIN FORM -->
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <h3 class="form-title font-green">Kullanıcı Giriş</h3>
+            @Html.ValidationMessage("LoginUser")
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">E-Mail</label>
+                @Html.TextBox("kullaniciMail", null, htmlAttributes: new { @class = "form-control form-control-solid placeholder-no-fix", placeholder = "e-mail" })
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Şifre</label>
+                @Html.TextBox("kullaniciSifre", null, htmlAttributes: new { @class = "form-control form-control-solid placeholder-no-fix", placeholder = "şifre", @type = "password" })
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn green uppercase">GİRİŞ</button>
+                <label class="rememberme check">
+                    <input type="checkbox" name="remember" id="remember" value="1" />Beni Hatırla
+                </label>
+                <a href="javascript:;" id="forget-password" class="forget-password">Şifremi Unuttum ?</a>
+            </div>
+        }
+        <!-- END LOGIN FORM -->
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+        <form class="forget-form" action="index.html" method="post">
+            <h3 class="font-green">Şifremi Unuttum ?</h3>
+            <p> Şifrenizi sıfırlamak için aşağıya e-posta adresinizi girin. </p>
+            <div class="form-group">
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" />
+            </div>
+            <div class="form-actions">
+                <button type="button" id="back-btn" class="btn btn-default">İPTAL</button>
+                <button type="submit" class="btn btn-success uppercase pull-right">GÖNDER</button>
+            </div>
+        </form>
+        <!-- END FORGOT PASSWORD FORM -->
+    </div>
+    <!--[if lt IE 9]>
+    <script src="../assets/global/plugins/respond.min.js"></script>
+    <script src="../assets/global/plugins/excanvas.min.js"></script>
+    <![endif]-->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/js.cookie.min.js"></script>
+    <script src="~/Content/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Content/js/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/js/jquery.blockui.min.js"></script>
+    <script src="~/Content/js/jquery.uniform.min.js"></script>
+    <script src="~/Content/js/bootstrap-switch.min.js"></script>
+
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="~/Content/js/jquery.validate.min.js"></script>
+    <script src="~/Content/js/additional-methods.min.js"></script>
+    <script src="~/Content/js/select2.full.min.js"></script>
+
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="~/Content/js/app.min.js"></script>
+
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="~/Content/js/login.min.js"></script>
+
+    <!-- END PAGE LEVEL SCRIPTS -->
+    <!-- BEGIN THEME LAYOUT SCRIPTS -->
+    <!-- END THEME LAYOUT SCRIPTS -->
+</body>
+</html>

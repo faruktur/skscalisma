@@ -1,0 +1,65 @@
+﻿@model SksCalisma.Models.BolumKontejyan
+    @using (Html.BeginForm("Kontenjan", "Bolum", FormMethod.Post, htmlAttributes: new { Area = "Admin" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="modal-body">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.bolumKontejyanID)
+                <div class="form-group form-md-line-input">
+                    @Html.LabelFor(model => model.bolumKontejyanAkademi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.bolumKontejyanAkademi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.bolumKontejyanAkademi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    @Html.LabelFor(model => model.bolumKontejyanIdari, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.bolumKontejyanIdari, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.bolumKontejyanIdari, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    @Html.LabelFor(model => model.bolumKontejyanEkAkademi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.bolumKontejyanEkAkademi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.bolumKontejyanEkAkademi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    @Html.LabelFor(model => model.bolumKontejyanEkIdari, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.bolumKontejyanEkIdari, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.bolumKontejyanEkIdari, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    @Html.LabelFor(model => model.bolumKontejyanAkademiNot, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.bolumKontejyanAkademiNot, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.bolumKontejyanAkademiNot, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group form-md-line-input">
+                    @Html.LabelFor(model => model.bolumKontejyanIdarıNot, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.bolumKontejyanIdarıNot, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.bolumKontejyanIdarıNot, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Kaydet" class="btn btn-outline green" />
+                </div>
+            </div>
+        </div>
+    }

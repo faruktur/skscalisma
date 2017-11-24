@@ -1,0 +1,127 @@
+﻿@model List<SksCalisma.Models.OgrenciBasvuru>
+@{
+    ViewBag.Title = "Basvurularim";
+    Layout = "~/Views/Shared/_LayoutOgrenci.cshtml";
+}
+<div class="row" id="mesaj"></div>
+
+@foreach (var item in Model)
+{
+
+    <div class="col-md-6" id="item_@item.ilanID">
+        <div class="portlet box blue" >
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>@item.Ilan.ilanMetni.Substring(1, 8)
+                </div>
+
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+
+                    <table id="user" class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="width:15%"> @Html.DisplayNameFor(model => item.Ilan.personelID) </td>
+
+                                <td style="width:85%">
+                                    <span class="text-muted"> @Html.DisplayFor(model => item.Ilan.personelID) </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:15%"> @Html.DisplayNameFor(model => item.Ilan.calismaTipID) </td>
+
+                                <td style="width:85%">
+                                    <span class="text-muted"> @Html.DisplayFor(model => item.Ilan.calismaTipID) </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:15%"> @Html.DisplayNameFor(model => item.Ilan.ilanEklemeTarih) </td>
+
+                                <td style="width:85%">
+                                    <span class="text-muted"> @Html.DisplayFor(model => item.Ilan.ilanEklemeTarih) </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:15%"> @Html.DisplayNameFor(model => item.Ilan.ilanGüncellemeTarih) </td>
+
+                                <td style="width:85%">
+                                    <span class="text-muted"> @Html.DisplayFor(model => item.Ilan.ilanGüncellemeTarih) </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:15%"> @Html.DisplayNameFor(model => item.Ilan.ilanCalisanSayisi) </td>
+
+                                <td style="width:85%">
+                                    <span class="text-muted"> @Html.DisplayFor(model => item.Ilan.ilanCalisanSayisi) </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width:15%"> @Html.DisplayNameFor(model => item.Ilan.ilanCalisanGun) </td>
+
+                                <td style="width:85%">
+                                    <table class="table">
+
+                                        <tr>
+                                            <td class="numeric"> Pazartesi </td>
+                                            <td class="numeric"> Salı </td>
+                                            <td class="numeric"> Çarşamba </td>
+                                            <td class="numeric"> Perşembe </td>
+                                            <td class="numeric"> Cuma </td>
+
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="width:15%">İlan Detayları</td>
+                                <td style="width:85%">@Html.Raw(item.Ilan.ilanMetni)</td>
+                            </tr>
+
+
+
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    @using (Ajax.BeginForm("Delete", "Basvuru", new { id = item.ogrenciBasvuruID }, new AjaxOptions() { HttpMethod="POST", OnSuccess = "basarili("+item.ilanID+")",OnFailure="fail()"}))
+                    {
+                        <button id="btnsil" type="submit" class="btn green-sharp btn-circle" data-toggle="confirmation" data-popout="true" data-original-title="" title="" aria-describedby="confirmation325509">Sil</button>
+                    }
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+    {
+    <script>
+        function basarili(id)
+        {
+            $("#mesaj").children().remove();
+            $("#mesaj").append("<div class='alert alert-success'><strong> Başarılı!</strong> İlan silindi</div>");
+            $("#item_"+id).remove();
+            $("#mesaj").delay(5000).children().remove();
+           
+        }
+        function fail()
+        {
+            $("#mesaj").children().remove();
+            $("#mesaj").append("<div class='alert alert-danger'  ><strong> HATA!</strong> İlan silinemedi.Sayfayı yenileyin.</div>");
+            $("#mesaj").delay(5000).children().remove();
+        }
+       
+       
+    </script>
+    }

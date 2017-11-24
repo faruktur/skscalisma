@@ -1,0 +1,12 @@
+﻿@model SksCalisma.Areas.Admin.Models.PersonelViewModel
+@using (Html.BeginForm("Delete", "Personel", FormMethod.Post, htmlAttributes: new { Area = "Admin" }))
+{
+    <div class="modal-body">
+        @Model.personel.personelAd @Model.personel.personelSoyad adlı personeli silmek istediğinize emin misiniz?
+    </div>
+    <div class="modal-footer">
+        @Html.AntiForgeryToken()
+        <input type="hidden" value="@Model.personel.personelID" name="id" />
+        <input type="submit" value="Onayla" class="btn green" />
+    </div>
+}

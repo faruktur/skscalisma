@@ -1,0 +1,76 @@
+﻿@model SksCalisma.Areas.Admin.Models.PersonelViewModel
+@using (Html.BeginForm("Create", "Personel", FormMethod.Post))
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.kullanici.kullaniciMail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.kullanici.kullaniciMail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.kullanici.kullaniciMail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.kullanici.kullaniciSifre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.kullanici.kullaniciSifre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.kullanici.kullaniciSifre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.personel.personelTC, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.personel.personelTC, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.personel.personelTC, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.personel.personelAd, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.personel.personelAd, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.personel.personelAd, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.personel.personelSoyad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.personel.personelSoyad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.personel.personelSoyad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.personel.personelDahiliNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.personel.personelDahiliNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.personel.personelDahiliNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.personel.personelUnvan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.personel.personelUnvan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.personel.personelUnvan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.personel.birimID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.personel.birimID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.birimID, "", htmlAttributes: new { @class = "form-control select2 crbirim", onchange = "SelectChange('cr')", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.personel.birimID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.personel.bolumID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.personel.bolumID, Enumerable.Empty<SelectListItem>(), "", htmlAttributes: new { @class = "form-control select2 crbolum", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.personel.bolumID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn dark btn-outline" data-dismiss="modal">İptal</button>
+        <input type="submit" class="btn green" value="Kaydet">
+    </div>
+}

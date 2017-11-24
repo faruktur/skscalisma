@@ -1,0 +1,19 @@
+﻿@model SksCalisma.Areas.Admin.Models.OgrenciViewModel
+<div class="modal-body">
+    <ul class="list-group">
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.kullanici.kullaniciMail): @Html.DisplayFor(model => model.kullanici.kullaniciMail) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenciTC): @Html.DisplayFor(model => model.ogrenci.ogrenciTC) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenciAd): @Html.DisplayFor(model => model.ogrenci.ogrenciAd) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenciSoyad): @Html.DisplayFor(model => model.ogrenci.ogrenciSoyad) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenciNumara): @Html.DisplayFor(model => model.ogrenci.ogrenciNumara) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenciDogumTarih): @Html.DisplayFor(model => model.ogrenci.ogrenciDogumTarih) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenciTelNo): @Html.DisplayFor(model => model.ogrenci.ogrenciTelNo) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenciIBAN): @Html.DisplayFor(model => model.ogrenci.ogrenciIBAN) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenciNotOrt): @Html.DisplayFor(model => model.ogrenci.ogrenciNotOrt) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.okulID): @Html.DisplayFor(model => model.ogrenci.Okul.okulAd) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.okulBolumID): @Html.DisplayFor(model => model.ogrenci.OkulBolum.okulBolumAd) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.sinifID): @Html.DisplayFor(model => model.ogrenci.Sinif.sinifAd) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenimTurID): @Html.DisplayFor(model => model.ogrenci.OgrenimTur.ogrenimTurAd) </li>
+        <li class="list-group-item"> @Html.DisplayNameFor(model => model.ogrenci.ogrenimTipID): @Html.DisplayFor(model => model.ogrenci.OgrenimTip.ogrenimTipAd) </li>
+    </ul>
+</div>

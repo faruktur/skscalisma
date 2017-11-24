@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "İlanOlustur";
+    Layout = "~/Views/Shared/_LayoutPersonel.cshtml";
+}
+
+<div class="page-container-bg-solid">
+
+
+
+    <div class="pull-right">
+
+        @* ÇALIŞMA ŞEKLİ *@
+        <div class="row col-md-12">
+            <div class="col-md-3">Çalışma Şekli</div>
+            <div class="col-md-3 ">
+                <select name="" id="" class="btn btn-default dropdown-toggle col-md-12">
+                    <option selected="selected" value=""></option>
+                    <option value="2">Gecici İnsan Kaynağı </option>
+                    <option value="1">&#214;ğrenci Asistan </option>
+                </select>
+            </div>
+        </div>
+
+        @* İŞİN ÖZEL NİTELİĞİ *@
+        <div class="row col-md-12 margin-top-10">
+            <div class="col-md-3">İşin Özel Niteliği</div>
+            <div class="col-md-5">
+                <textarea name="" rows="2" cols="20" id="" class="form-control col-md-12" placeholder="Öğrencinin yapacağı iş ile ilgili ö" style="height:135px;"></textarea>
+            </div>
+
+        </div>
+
+        @* ÇALIŞTIRALACAK BİRİM *@
+        <div class="row col-md-12  margin-top-10">
+            <div class="col-md-3">Çalıştırılacak Birim</div>
+
+            <div class="col-md-3">
+                <select name="" id="" class="btn btn-default dropdown-toggle col-md-12">
+                    @* onchange özelliği var *@
+                    <option value="-1">SEÇİNİZ</option>
+                    <option selected="selected" value="19">BİLGİSAYAR VE BİLİŞİM BİLİMLERİ FAKÜLTESİ</option>
+
+                </select>
+            </div>
+
+        </div>
+
+        @* ÇALIŞTIRALACAK BÖLÜM *@
+        <div class="row col-md-12 margin-top-10">
+            <div class="col-md-3">Çalıştırılacak Bölüm</div>
+
+            <div class="col-md-3">
+                <select name="" id="" class="btn btn-default dropdown-toggle col-md-12">
+                    <option value="-1">SEÇİNİZ</option>
+                    <option selected="selected" value="321">0</option>
+                    <option value="322">1</option>
+                    <option value="83">BİLGİSAYAR MÜHENDİSLİĞİ</option>
+                    <option value="82">BİLİŞİM SİSTEMLERİ MÜHENDİSLİĞİ</option>
+
+                </select>
+            </div>
+
+        </div>
+
+        @* ÇALIŞTIRALACAK ÖĞRENCİ SAYISI *@
+        <div class="row col-md-12 margin-top-10">
+            <div class="col-md-3">Çalıştırılacak Ögrenci Sayısı</div>
+            <div class="col-md-3">
+                <input name="" type="text" maxlength="50" id="" class="form-control" />
+            </div>
+
+        </div>
+
+        @* ÖĞRENİM TÜRÜ *@
+        <div class="row col-md-12 margin-top-10">
+            <div class="col-md-3">Öğrenim Türü</div>
+            <div class="col-md-3">
+                <select name="" id="" class="btn btn-default col-md-12">
+                    <option selected="selected" value="0">Seciniz</option>
+                    <option value="1">Doktora</option>
+                    <option value="2">YuksekLisans</option>
+                    <option value="3">Lisans</option>
+                    <option value="4">ÖnLisans</option>
+                    <option value="5">FarkEtmez</option>
+
+                </select>
+            </div>
+
+        </div>
+        
+         
+        @* ÖĞLEDEN ÖNCE *@
+        <div class="row col-md-12 margin-top-10">
+            <div class="col-md-3">Ögleden Once Çalışılacak Günler</div>
+
+
+            
+                <input id="" type="checkbox" name="" /><label for="">Pazartesi</label>
+                &nbsp;&nbsp;
+                <input id="" type="checkbox" name="" /><label for="">Salı</label>
+                &nbsp;&nbsp;
+                <input id="" type="checkbox" name="" /><label for="">Çarşamba</label>
+                &nbsp;&nbsp;
+                <input id="" type="checkbox" name="" /><label for="">Perşembe</label>
+                &nbsp;&nbsp;
+                <input id="" type="checkbox" name="" /><label for="">Cuma</label>
+            
+
+        </div>
+
+        @* ÖĞLEDEN SONRA *@
+        <div class="row col-md-12 margin-top-10">
+            <div class="col-md-3">Öğleden Sonra Çalışılacak Günler</div>
+           
+            <input id="" type="checkbox" name="" /><label for="">Pazartesi</label>
+            &nbsp;&nbsp;
+            <input id="" type="checkbox" name="" /><label for="">Salı</label>
+            &nbsp;&nbsp;
+            <input id="" type="checkbox" name="" /><label for="">Çarşamba</label>
+            &nbsp;&nbsp;
+            <input id="" type="checkbox" name="" /><label for="">Perşembe</label>
+            &nbsp;&nbsp;
+            <input id="" type="checkbox" name="" /><label for="">Cuma</label>
+
+        </div>
+
+        @* İLAN BİTİŞ SÜRESİ *@
+        <div class="row col-md-12 margin-top-10">
+            <div class="col-md-3">İlan Bitiş Süresi</div>
+            <div class="col-md-3">
+                <input name="" type="text" id="" disabled="disabled" class="aspNetDisabled form-control" />
+            </div>
+
+        </div>
+        @* EKLE/BİTİR *@
+        <div class="row col-md-12 margin-top-10">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <input type="submit" name="" value="Ekle/Bitir" id="" class="btn blue col-md-12" />
+            </div>
+        </div>
+
+    </div>
+
+</div>

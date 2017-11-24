@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@section styles{
+    <link href="~/Content/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="~/Content/css/multi-select.css" rel="stylesheet" />
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/css/select2-bootstrap.min.css" rel="stylesheet" />
+}
+<div class="col-md-6">
+    <div class="portlet light">
+        <div class="portlet-title">
+            <div class="caption font-green">
+                <i class="icon-layers font-green"></i>
+                <span class="caption-subject bold uppercase">İlanlar</span>
+            </div>
+            <div class="actions">
+                <div class="btn-group">
+                    @Ajax.ActionLink("İlan Oluştur", "GetCreateForm", null, new AjaxOptions { OnBegin = "clearArea()", OnComplete = "unblock()", UpdateTargetId = "area", InsertionMode = InsertionMode.Replace }, new { @class = "btn green btn-outline sbold pull-right" })
+                </div>
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="mt-comments">
+                @foreach (SksCalisma.Models.Ilan item in ViewBag.ilanlar)
+                {
+                    <div class="mt-comment">
+                        <div class="mt-comment-body">
+                            <div class="mt-comment-info">
+                                <span class="mt-comment-author">@item.CalismaTip.calismaTipAd - @item.OgrenimTip.ogrenimTipAd - @item.ilanCalisanSayisi</span>
+                                <span class="mt-comment-date">@item.OgrenciBasvuru.Count Başvuru</span>
+                            </div>
+                            <div class="mt-comment-text">@item.ilanMetni</div>
+                            <div class="mt-comment-details">
+                                <span class="mt-comment-status mt-comment-status-pending"></span>
+                                <ul class="mt-comment-actions">
+                                    <li>
+                                        <a href="#">Düzenle</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Sil</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="portlet light">
+        <div class="portlet-body" id="area">
+
+        </div>
+    </div>
+</div>
+@section scripts{
+<script src="~/Content/js/bootstrap-select.min.js"></script>
+<script src="~/Content/js/jquery.multi-select.js"></script>
+<script src="~/Content/js/select2.full.min.js"></script>
+    <script>
+        function clearArea()
+        {
+            $('#area').empty();
+            App.blockUI({
+                target: '#area',
+                boxed: true,
+                textOnly: true, 
+            });
+            $('#area').focus();
+        }
+        function unblock()
+        {
+            App.unblockUI('#area');
+            $('#my_multi_select2').multiSelect({
+                selectableOptgroup: true
+            });
+            $('.ms-optgroup-label').click(function () {
+                var opt = $(this).children('span').html();
+                var val = $('#ilanCalisanGun').val();
+                var id = $(this).parent().parent().attr('id');
+                console.log(id);
+                if (id.indexOf('selectable') !== -1) {
+                    if (opt == 'Öğleden Önce') {
+                        for (var i = 0; i < 5; i++) {
+                            val = val.replaceAt(i, '1');
+                        }
+                    }
+                    else if (opt == 'Öğleden Sonra') {
+                        for (var i = 5; i < 10; i++) {
+                            val = val.replaceAt(i, '1');
+                        }
+                    }
+                }
+                else if (id.indexOf('selection') !== -1) {
+                    if (opt == 'Öğleden Önce') {
+                        for (var i = 0; i < 5; i++) {
+                            val = val.replaceAt(i, '0');
+                        }
+                    }
+                    else if (opt == 'Öğleden Sonra') {
+                        for (var i = 5; i < 10; i++) {
+                            val = val.replaceAt(i, '0');
+                        }
+                    }
+                }
+                
+                $('#ilanCalisanGun').val(val);
+            });
+            $('.ms-elem-selectable').click(function () {
+                var optGroup = $(this).parent().children().first().children('span').html();
+                var opt = $(this).children('span').html();
+                var val = $('#ilanCalisanGun').val();
+                if (optGroup == 'Öğleden Önce') {
+                    switch (opt) {
+                        case 'Pazartesi': val = val.replaceAt(0, '1');
+                            break;
+                        case 'Salı': val = val.replaceAt(1, '1');
+                            break;
+                        case 'Çarşamba': val = val.replaceAt(2, '1');
+                            break;
+                        case 'Perşembe': val = val.replaceAt(3, '1');
+                            break;
+                        case 'Cuma': val = val.replaceAt(4, '1');
+                            break;
+                    }
+                }
+                else if (optGroup == 'Öğleden Sonra') {
+                    switch (opt) {
+                        case 'Pazartesi': val = val.replaceAt(5, '1');
+                            break;
+                        case 'Salı': val = val.replaceAt(6, '1');
+                            break;
+                        case 'Çarşamba': val = val.replaceAt(7, '1');
+                            break;
+                        case 'Perşembe': val = val.replaceAt(8, '1');
+                            break;
+                        case 'Cuma': val = val.replaceAt(9, '1');
+                            break;
+                    }
+                }
+                $('#ilanCalisanGun').val(val);
+            })
+            $('.ms-elem-selection').click(function () {
+                var optGroup = $(this).parent().children().first().children('span').html();
+                var opt = $(this).children('span').html();
+                var val = $('#ilanCalisanGun').val();
+                if (optGroup == 'Öğleden Önce') {
+                    switch (opt) {
+                        case 'Pazartesi': val = val.replaceAt(0, '0');
+                            break;
+                        case 'Salı': val = val.replaceAt(1, '0');
+                            break;
+                        case 'Çarşamba': val = val.replaceAt(2, '0');
+                            break;
+                        case 'Perşembe': val = val.replaceAt(3, '0');
+                            break;
+                        case 'Cuma': val = val.replaceAt(4, '0');
+                            break;
+                    }
+                }
+                else if (optGroup == 'Öğleden Sonra') {
+                    switch (opt) {
+                        case 'Pazartesi': val = val.replaceAt(5, '0');
+                            break;
+                        case 'Salı': val = val.replaceAt(6, '0');
+                            break;
+                        case 'Çarşamba': val = val.replaceAt(7, '0');
+                            break;
+                        case 'Perşembe': val = val.replaceAt(8, '0');
+                            break;
+                        case 'Cuma': val = val.replaceAt(9, '0');
+                            break;
+                    }
+                }
+                $('#ilanCalisanGun').val(val);
+            })
+        }
+        String.prototype.replaceAt = function (index, character) {
+            return this.substr(0, index) + character + this.substr(index + character.length);
+        }
+    </script>    
+}

@@ -1,0 +1,256 @@
+﻿@model SksCalisma.Models.OgrenciViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>SKS | Öğrenci Kayıt</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/simple-line-icons.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/uniform.default.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-switch.min.css" rel="stylesheet" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/css/select2-bootstrap.min.css" rel="stylesheet" />
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL STYLES -->
+    <link href="~/Content/css/components.min.css" rel="stylesheet" />
+    <link href="~/Content/css/plugins.css" rel="stylesheet" />
+    <!-- END THEME GLOBAL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="~/Content/css/login.min.css" rel="stylesheet" />
+    <!-- END PAGE LEVEL STYLES -->
+    <!-- BEGIN THEME LAYOUT STYLES -->
+    <!-- END THEME LAYOUT STYLES -->
+</head>
+<body class="login">
+    <div class="logo">
+        <a href="~/Home/Index">
+            <img src="~/Content/img/_LayoutPersonel/logo2.png" alt="" />
+        </a>
+    </div>
+    <div class="content">
+        @using (Html.BeginForm("OgrenciKayit", "Home", FormMethod.Post, new { @class = "login-form" , @id="form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h3 class="font-green">KAYIT FORMU</h3>
+            <p class="hint">Aşağıdaki istenilen bilgileri doldurunuz:</p>
+            <form class="login-form">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <p class="hint"><h3>Kullanıcı Giriş Bilgileri</h3></p>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.kullanici.kullaniciMail, new {  htmlAttributes = new {  @class = "form-control placeholder-no-fix",@placeholder = "E-Mail" } })
+                    @Html.ValidationMessageFor(model => model.kullanici.kullaniciMail, "", new { @class = "text-danger" })
+
+                </div>
+                <div class="form-group">
+                    @Html.PasswordFor(model => model.kullanici.kullaniciSifre, new { @id = "kullaniciSifre", @class = "form-control placeholder-no-fix", @placeholder = "Parola" })
+                    @Html.ValidationMessageFor(model => model.kullanici.kullaniciSifre, "", new { @class = "text-danger" })
+                </div>
+
+                <p class="hint"><h3>Kişisel Bilgiler</h3></p>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciTC, new { htmlAttributes = new { @class = "form-control placeholder-no-fix", @placeholder = "TC" ,@id="tcno",@onchange ="TCKontrol()"} })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciTC, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciNumara, new { htmlAttributes = new { @id = "ogrenciNumara", @class = "form-control placeholder-no-fix", @placeholder = "Öğrenci No" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciNumara, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciMail, new { htmlAttributes = new { @id = "kullaniciMail", @class = "form-control placeholder-no-fix", @placeholder ="Öğrenci Mail Adresi (Orn: ogrenci@sakarya.edu.tr)" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciMail, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciAd, new { htmlAttributes = new { @id = "ogrenciAd", @class = "form-control placeholder-no-fix alphaonly", @placeholder = "Ad" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciAd, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciSoyad, new { htmlAttributes = new { @id = "ogrenciSoyad", @class = "form-control placeholder-no-fix alphaonly", @placeholder = "Soyad" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciSoyad, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciDogumTarih, new { htmlAttributes = new { @id = "ogrenciDogumTarih", @class = "form-control placeholder-no-fix", @placeholder = "Doğum Tarihi" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciDogumTarih, "", new { @class = "text-danger" })
+                </div>
+               
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciTelNo, new { htmlAttributes = new { @id = "ogrenciTelNo", @class = "form-control placeholder-no-fix", @placeholder = "Telefon Numarası" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciTelNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciIBAN, new { htmlAttributes = new { @id = "ogrenciIBAN", @class = "form-control placeholder-no-fix", @placeholder = "IBAN" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciIBAN, "", new { @class = "text-danger" })
+                </div>
+                <p class="hint"><h3>Öğrenim Bilgileri</h3></p>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciNotOrt, new { htmlAttributes = new { @id = "ogrenciNotOrt", @class = "form-control placeholder-no-fix", @placeholder = "Not Ortalaması" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciNotOrt, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.ogrenci.okulID)
+                    @Html.DropDownListFor(model => model.ogrenci.okulID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.OkulID, htmlAttributes: new { @class = "form-control", onchange = "SelectedChange()" , @id="okulID", @placeholder = "-Seçiniz-" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.okulID, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group" id="Bolumler">
+                    @Html.DisplayNameFor(model => model.ogrenci.okulBolumID)
+                   @Html.DropDownListFor(model => model.ogrenci.okulBolumID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.okulBolumID, htmlAttributes: new { @class = "form-control",@id="okulBolumID", @placeholder = "-Seçiniz-" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.okulBolumID, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.ogrenci.sinifID)
+                    @Html.DropDownListFor(model => model.ogrenci.sinifID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.sinifID, htmlAttributes: new { @class = "form-control", @placeholder = "-Seçiniz-" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.sinifID, "", new { @class = "text-danger",  })
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.ogrenci.ogrenimTurID)
+                    @Html.DropDownListFor(model => model.ogrenci.ogrenimTurID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.ogrenimTurID, htmlAttributes: new { @class = "form-control" , @placeholder = "-Seçiniz-" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenimTurID, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.DisplayNameFor(model => model.ogrenci.ogrenimTipID)
+                    @Html.DropDownListFor(model => model.ogrenci.ogrenimTipID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.ogrenimTipID, htmlAttributes: new { @class = "form-control", @placeholder = "-Seçiniz-" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenimTipID, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydı Tamamla" class="btn btn-success uppercase pull-right" id="btnkayit" />
+                    </div>
+                </div>
+            </form>
+        }
+    </div>
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/js.cookie.min.js"></script>
+    <script src="~/Content/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="~/Content/js/jquery.slimscroll.min.js"></script>
+    <script src="~/Content/js/jquery.blockui.min.js"></script>
+    <script src="~/Content/js/jquery.uniform.min.js"></script>
+    <script src="~/Content/js/bootstrap-switch.min.js"></script>
+   
+    <!-- END CORE PLUGINS -->
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    <script src="~/Content/js/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+   
+    <script src="~/Content/js/additional-methods.min.js"></script>
+    <script src="~/Content/js/select2.full.min.js"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+    <!-- BEGIN THEME GLOBAL SCRIPTS -->
+    <script src="~/Content/js/app.min.js"></script>
+    <!-- END THEME GLOBAL SCRIPTS -->
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    <script src="~/Content/js/login.min.js"></script>
+    <script src="~/Content/js/_LayoutOgrenci/jquery.maskedinput.js"></script>
+    <script>  
+        function SelectedChange() {
+            var bolum = $("#okulBolumID");
+            var okul = $("#okulID");
+            bolum.empty();
+            if (okul.val() != '') {
+                $.ajax({
+                    type: "POST",
+                    url: "/Home/Bolumler",
+                    data: { 'okulID': okul.val() },
+                    success: function (data) {
+                        bolum.empty();
+                        for (var i = 0; i < data.bt.length; i++) {
+                            bolum.append($('<option value="' + data.bt[i].okulBolumID + '"></option>').text(data.bt[i].okulBolumAd))
+                        }
+                    },
+                    error: function (error) {
+                        alert('Hata');
+                    }
+                })
+            }
+        }
+    </script>
+    <script>
+        function TCKontrol()
+        {
+            var tc = $("#tcno");
+            var tcstring = tc.val().length;
+            if(tcstring==11)
+            {              
+                $.ajax(
+                    {
+                        type:"POST",
+                        url: "/Home/TcKontrol",
+                        data: { 'tcKimlikNo': tc.val().toString() },
+                        success:function(data)
+                        {
+                            if(data.sonuc==true)
+                            {
+                                $("#tcno").parent().removeClass("has-warning").addClass("has-success");
+                                $("#btnkayit").attr("disabled", false);
+                                alert("TC Geçerli");
+                            }
+                            else
+                            {
+                                $("#tcno").parent().removeClass("has-success").addClass("has-warning");
+                                $("#btnkayit").attr("disabled", "disabled");
+                                alert("TC Geçersiz");
+                            }
+
+                        }
+                    })
+       
+            }
+
+        }
+    </script>
+    <script>
+        jQuery(function($){   
+        $("#ogrenciNumara").mask("a999999999");
+        $("#ogrenciDogumTarih").mask("99/99/9999");
+        $("#ogrenciTelNo").mask("999 999 9999");
+        $("#ogrenciIBAN").mask("aa 9999 9999 9999 9999 9999 9999");
+        });
+    </script>
+    <script>
+        $('.alphaonly').on("keydown", function (event) {
+            var arr = [8, 16, 17, 20, 35, 36, 37, 38, 39, 40, 45, 46];
+
+            // Allow letters
+            for (var i = 65; i <= 90; i++) {
+                arr.push(i);
+            }
+
+            // Prevent default if not in array
+            if (jQuery.inArray(event.which, arr) === -1) {
+                event.preventDefault();
+            }
+        }
+);
+      
+
+    </script>
+    <script>
+
+        $("#form").submit(function () {
+            var allInputs = $(".form-control");
+            allInputs.each(function () {
+                $(this).val($.trim($(this).val()));
+            });
+
+        });
+
+    </script>
+    
+   
+    
+</body>
+</html>

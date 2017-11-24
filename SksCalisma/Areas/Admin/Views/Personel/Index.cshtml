@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@section modals{
+    <div class="modal fade draggable-modal ui-draggable" id="create" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ui-draggable-handle">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Personel Ekle</h4>
+                </div>
+                @Html.Partial("_Create", new SksCalisma.Areas.Admin.Models.PersonelViewModel())
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade draggable-modal ui-draggable" id="yetkimodal" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Yetki Ver</h4>
+            </div>
+            <div id="yetkidiv"></div>
+            <div id="yetkiloading" class="col-sm-offset-4">
+                <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><div class="modal fade draggable-modal ui-draggable" id="editModal" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Düzenle</h4>
+            </div>
+            <div id="editdiv"></div>
+            <div id="editloading" class="col-sm-offset-4">
+                <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><div class="modal fade draggable-modal ui-draggable" id="detailsModal" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Detaylar</h4>
+            </div>
+            <div id="detailsdiv"></div>
+            <div id="detailsloading" class="col-sm-offset-4">
+                <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><div class="modal fade draggable-modal ui-draggable" id="deleteModal" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Sil</h4>
+            </div>
+            <div id="deletediv"></div>
+            <div id="deleteloading" class="col-sm-offset-4">
+                <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>      
+}
+<div class="container">
+    <div class="box">
+        <a class="btn green btn-outline sbold" data-toggle="modal" href="#create"> Personel Ekle </a>
+    </div><br />
+    <div id="listdiv">
+        @Html.Partial("_List", (List<SksCalisma.Models.Personel>)ViewBag.Personeller)
+    </div>
+</div>
+@section scripts{    
+    <script>
+        function SelectChange(t) {
+            var birim = $('.' + t + 'birim');
+            var bolum = $('.' + t + 'bolum');
+            bolum.empty();
+            if (birim.val() != '') {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Personel/bolumler",
+                    data: { 'birimID': birim.val() },
+                    success: function (data) {
+                        bolum.empty();
+                        for (var i = 0; i < data.bt.length; i++) {
+                            bolum.append($('<option value="' + data.bt[i].bolumID + '"></option>').text(data.bt[i].bolumAd))
+                        }
+                    },
+                    error: function (error) {
+                        alert('Hata');
+                    }
+                })
+            }
+        }
+    </script>
+}

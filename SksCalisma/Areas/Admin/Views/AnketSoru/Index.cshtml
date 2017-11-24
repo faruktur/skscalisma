@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    var sorular = ViewBag.Sorular;
+}
+@section modals{
+    <div class="modal fade draggable-modal ui-draggable" id="create" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ui-draggable-handle">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Yeni soru oluştur</h4>
+                </div>
+                @Html.Partial("_Create", new SksCalisma.Models.AnketSoru())
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade draggable-modal ui-draggable" id="editModal" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ui-draggable-handle">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Düzenle</h4>
+                </div>
+                <div id="editdiv"></div>
+                <div id="editloading" class="col-sm-offset-4">
+                    <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade draggable-modal ui-draggable" id="deleteModal" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ui-draggable-handle">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Sil</h4>
+                </div>
+                <div id="deletediv"></div>
+                <div id="deleteloading" class="col-sm-offset-4">
+                    <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" /> Yükleniyor
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+}
+<div class="container">
+    <div class="box">
+        <a class="btn green btn-outline sbold" data-toggle="modal" href="#create"> Yeni Soru Oluştur </a>
+    </div><br />
+    <div class="portlet box green">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-cogs"></i>Sorular
+            </div>
+            <div class="tools">
+            </div>
+        </div>
+        <div class="portlet-body">
+            <div class="table-scrollable">
+                <table class="table table-striped table-bordered table-advance table-hover">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Soru</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in sorular)
+                        {
+                            <tr id="@string.Format("satir{0}", item.anketSoruID)">
+                                <td>
+                                    @item.anketSoruIcerik
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline green" type="button" data-toggle="collapse" data-target="@string.Format("#buttonlar{0}", item.anketSoruID)" aria-expanded="false" aria-controls="@string.Format("buttonlar{0}", item.anketSoruID)">
+                                        <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr class="collapse fade" id="@string.Format("buttonlar{0}", item.anketSoruID)">
+                                <td colspan="2">
+                                    <div class="col-sm-2">
+                                        @Html.ActionLink("Seçenekler", "Index", "AnketSecenek", new { id = item.anketSoruID }, new { @class = "btn btn-outline green form-control" })
+                                    </div>
+                                    <div class="col-sm-2">
+                                        @using (Ajax.BeginForm("GetEditForm", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "editdiv", LoadingElementId = "editloading" }))
+                                        {
+                                            <input type="hidden" value="@item.anketSoruID" name="id" />
+                                            <input type="submit" value="Düzenle" class="btn btn-outline green form-control" data-toggle="modal" data-target="#editModal" />
+                                        }
+                                    </div>
+                                    <div class="col-sm-2">
+                                        @using (Ajax.BeginForm("GetDeleteForm", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "deletediv", LoadingElementId = "deleteloading" }))
+                                        {
+                                            <input type="hidden" value="@item.anketSoruID" name="id" />
+                                            <input type="submit" value="Sil" class="btn btn-outline green form-control" data-toggle="modal" data-target="#deleteModal" />
+                                        }
+                                    </div>
+                                    <div class="col-sm-2">
+                                        @using (Ajax.BeginForm("UpdateOrder", new AjaxOptions { HttpMethod = "POST", OnComplete = "Up(" + item.anketSoruID + ")", OnBegin = "ShowLoading(" + item.anketSoruID + ")" }))
+                                        {
+                                            <input type="hidden" value="@item.anketSoruID" name="_anketSoruID" />
+                                            <input type="hidden" value="true" name="isDown" />
+                                            <button type="submit" class="btn btn-outline green form-control"><span class='fa fa-caret-square-o-up'></span></button>
+                                        }
+                                    </div>
+                                    <div class="col-sm-2">
+                                        @using (Ajax.BeginForm("UpdateOrder", new AjaxOptions { HttpMethod = "POST", OnComplete = "Down(" + item.anketSoruID + ")", OnBegin = "ShowLoading(" + item.anketSoruID + ")" }))
+                                        {
+                                            <input type="hidden" value="@item.anketSoruID" name="_anketSoruID" />
+                                            <input type="hidden" value="false" name="isDown" />
+                                            <button type="submit" class="btn btn-outline green form-control"><span class='fa fa-caret-square-o-down'></span></button>
+                                        }
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <img src="~/Content/img/_LayoutAdmin/loading-spinner-blue.gif" id="@string.Format("arrowLoading{0}", item.anketSoruID)" class="hidden" />
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        function Up(id)
+        {
+            $('#buttonlar' + id).insertBefore($('#buttonlar' + id).prev('tr').prev('tr'));
+            $('#satir' + id).insertBefore($('#satir' + id).prev('tr').prev('tr'));
+            HideLoading(id);
+        }
+        function Down(id) {
+            $('#satir' + id).insertAfter($('#satir' + id).next('tr').next('tr'));
+            $('#buttonlar' + id).insertAfter($('#buttonlar' + id).next('tr').next('tr'));
+            HideLoading(id);
+        }
+        function ShowLoading(id)
+        {
+            $('#arrowLoading' + id).removeClass('hidden');
+        }
+        function HideLoading(id)
+        {
+            $('#arrowLoading' + id).addClass('hidden');
+        }
+    </script>    
+}

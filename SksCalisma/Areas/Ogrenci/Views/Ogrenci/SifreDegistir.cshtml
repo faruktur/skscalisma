@@ -1,0 +1,91 @@
+﻿@model SksCalisma.Models.Kullanici
+
+@{
+    ViewBag.Title = "SKS | Öğrenci";
+    Layout = "~/Views/Shared/_LayoutOgrenci.cshtml";
+}
+
+<h2>Sifre Değiştirme</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+     
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.kullaniciID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.kullaniciMail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.kullaniciMail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.kullaniciMail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.kullaniciSifre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.kullaniciSifre, new { @class = "form-control",@id="pass1"})
+                @Html.ValidationMessageFor(model => model.kullaniciSifre, "", new { @class = "text-danger" })
+               
+            </div>
+        </div>
+        <div class="form-group">
+        <label   class="control-label col-md-2">Şifre Tekrar</label>   
+            <div class="col-md-10"> 
+                <input type="password" id="pass2" class="form-control"/>
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.kullaniciEklemeTarihi)
+        @Html.HiddenFor(model => model.kullaniciTipID)
+
+        
+
+        
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="savebutton" type="submit" value="Kaydet" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section scripts
+{
+    <script>
+       
+        $("#pass2").blur(function () {
+            var pass = $("#pass1").val();
+            var pass2 = $("#pass2").val();          
+                if(pass==pass2)
+                {
+                    $("#sifremesaj").hide();          
+                    $("#savebutton").attr("disabled",false);
+                }
+                else
+                {
+                    $("#sifremesaj").show();
+                    $("")
+                    $("#savebutton").attr("disabled", true);
+                }
+
+            
+          
+               
+        });
+
+
+       
+
+
+    </script>
+
+
+
+}

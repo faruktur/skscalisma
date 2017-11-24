@@ -1,0 +1,43 @@
+﻿@model SksCalisma.Models.Bolum
+
+@using (Html.BeginForm("Edit", "Bolum", FormMethod.Post, htmlAttributes: new { Area = "Admin" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="modal-body">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.bolumID)
+            @Html.HiddenFor(model => model.birimID)
+            @Html.HiddenFor(model => model.bolumKontejyanID)
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.bolumAd, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bolumAd, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bolumAd, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.bolumAkademikCalisan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bolumAkademikCalisan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bolumAkademikCalisan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.bolumIdariCalisan, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.bolumIdariCalisan, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.bolumIdariCalisan, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-outline green" />
+            </div>
+        </div>
+    </div>
+}

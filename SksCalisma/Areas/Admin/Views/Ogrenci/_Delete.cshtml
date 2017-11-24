@@ -1,0 +1,12 @@
+﻿@model SksCalisma.Areas.Admin.Models.OgrenciViewModel
+@using (Html.BeginForm("Delete", "Ogrenci", FormMethod.Post, htmlAttributes: new { Area = "Admin" }))
+{
+    <div class="modal-body">
+        @Model.ogrenci.ogrenciAd @Model.ogrenci.ogrenciSoyad adlı öğrenciyi silmek istediğinize emin misiniz?
+    </div>
+    <div class="modal-footer">
+        @Html.AntiForgeryToken()
+        <input type="hidden" value="@Model.ogrenci.ogrenciID" name="id" />
+        <input type="submit" value="Onayla" class="btn green" />
+    </div>
+}

@@ -1,0 +1,67 @@
+﻿@model SksCalisma.Models.Ilan
+@using (Html.BeginForm("Create", "Ilan", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-body">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.Hidden("ilanCalisanGun", "0000000000")
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.calismaTipID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("calismaTipID", (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.calismaTipID, "", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.calismaTipID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenimTipID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ogrenimTipID", (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.ogrenimTipID, "", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ogrenimTipID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ilanMetni, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ilanMetni, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ilanMetni, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ilanCalisanSayisi, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ilanCalisanSayisi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ilanCalisanSayisi, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                <label class="control-label col-md-2">Çalışma Günleri</label>
+                <div class="col-md-10">
+                    <select multiple="multiple" class="multi-select" id="my_multi_select2" name="my_multi_select2[]" style="position: absolute; left: -9999px;">
+                        <optgroup label="Öğleden Önce">
+                            <option value="1">Pazartesi</option>
+                            <option value="2">Salı</option>
+                            <option value="3">Çarşamba</option>
+                            <option value="4">Perşembe</option>
+                            <option value="5">Cuma</option>
+                        </optgroup>
+                        <optgroup label="Öğleden Sonra">
+                            <option value="6">Pazartesi</option>
+                            <option value="7">Salı</option>
+                            <option value="8">Çarşamba</option>
+                            <option value="9">Perşembe</option>
+                            <option value="10">Cuma</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-10 col-md-2">
+                    <button type="submit" class="btn blue">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

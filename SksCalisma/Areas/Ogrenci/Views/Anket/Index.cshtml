@@ -1,0 +1,50 @@
+﻿@model List<SksCalisma.Areas.Ogrenci.Models.AnketViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet light form-fit ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-social-dribbble font-green"></i>
+                    <span class="caption-subject font-green bold uppercase">Anket</span>
+                </div>
+                <div class="actions"></div>
+            </div>
+            <div class="portlet-body form">
+                @using (Html.BeginForm("Index", "Anket", FormMethod.Post, new { @class = "form-horizontal form-row-seperated" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-body">                        
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <div class="col-md-1">
+                                @Html.Hidden("model[" + i + "].cevap.anketCevapID", Model[i].cevap.anketCevapID)
+                                @Html.Hidden("model[" + i + "].cevap.kullaniciID", Model[i].cevap.kullaniciID)
+                            </div>
+                            <div class="form-group col-md-11">
+                                <label class="control-label col-md-7" for="">@Model[i].soru.anketSoruIcerik : </label>
+                                <div class="col-md-4">
+                                    @Html.DropDownList("model[" + i + "].cevap.anketSecenekID", Model[i].secenekler, "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-8 col-md-4">
+                                <button type="submit" class="btn green form-control">
+                                    <i class="fa fa-check"></i> Kaydet
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>

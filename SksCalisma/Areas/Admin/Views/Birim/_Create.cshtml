@@ -1,0 +1,35 @@
+﻿@model SksCalisma.Models.Birim
+@using (Html.BeginForm("Create", "Birim", FormMethod.Post, new { Area = "Admin" }))
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.BirimTip.birimTurID, "Birim Türü", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("birimTurID", (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.birimTurID, "", htmlAttributes: new { @class = "form-control birimTurID" })
+                    @Html.ValidationMessageFor(model => model.BirimTip.birimTurID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.birimTipID, "Birim Tipi", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.birimTipID, Enumerable.Empty<SelectListItem>(), "", htmlAttributes: new { @class = "form-control birimTipID" })
+                    @Html.ValidationMessageFor(model => model.birimTipID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.birimAd, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.birimAd, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.birimAd, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn dark btn-outline" data-dismiss="modal">İptal</button>
+        <input type="submit" class="btn green" value="Kaydet">
+    </div>
+}

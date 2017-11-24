@@ -1,0 +1,40 @@
+﻿@model  SksCalisma.Areas.Ogrenci.Models.SepetViewModel
+
+        @for (int i = 0;i<Model.ilan.Count; i++)
+          {
+                <tr id="@Model.ilan[i].ilanID">
+                    @Html.HiddenFor(modelitem => Model.ilan[i].ilanID)
+                    <td>
+                        @Html.DisplayFor(modelitem => Model.ilan[i].ilanMetni)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => Model.ilan[i].ilanEklemeTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => Model.ilan[i].ilanEklemeTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => Model.ilan[i].ilanEklemeTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => Model.ilan[i].ilanEklemeTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => Model.ilan[i].ilanEklemeTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => Model.ilan[i].ilanEklemeTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelitem => Model.ilan[i].ilanEklemeTarih)
+                    </td>
+                    <td>
+                        <a data-id="@Model.ilan[i].ilanID" onclick="detaygoruntule(@Model.ilan[i].ilanID)" id="detaybuton" class="btn blue btn-outline sbold uppercase detaybuton" href="javascript:void(0);">Detaylar</a>
+                        
+                    </td>
+                    <td>
+                        <a href="javascript:void(0);" onclick="sil(@Model.ilan[i].ilanID)">Kaldır</a>  
+                    </td>
+                </tr>
+
+          }

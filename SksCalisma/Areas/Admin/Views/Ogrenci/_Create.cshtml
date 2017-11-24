@@ -1,0 +1,147 @@
+﻿@model SksCalisma.Areas.Admin.Models.OgrenciViewModel
+@using (Html.BeginForm("Create", "Ogrenci", FormMethod.Post))
+{
+    <div class="modal-body">
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.kullanici.kullaniciMail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.kullanici.kullaniciMail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.kullanici.kullaniciMail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.kullanici.kullaniciSifre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.kullanici.kullaniciSifre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.kullanici.kullaniciSifre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciTC, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciTC, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciTC, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciNumara, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciNumara, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciNumara, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciAd, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciAd, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciAd, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciSoyad, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciSoyad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciSoyad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciMail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciMail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciMail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciDogumTarih, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciDogumTarih, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciDogumTarih, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciTelNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciTelNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciTelNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciIBAN, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciIBAN, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciIBAN, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.Okul.okulTipID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ogrenci.Okul.okulTipID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.OkulTipID, "", htmlAttributes: new { @class = "form-control select2 crokulTip", onchange = "SelectChange1('cr')", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.Okul.okulTipID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.okulID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ogrenci.okulID, Enumerable.Empty<SelectListItem>(), "", htmlAttributes: new { @class = "form-control select2 crokul", onchange = "SelectChange2('cr')", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.okulID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.okulBolumID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ogrenci.okulBolumID, Enumerable.Empty<SelectListItem>(), "", htmlAttributes: new { @class = "form-control select2 crokulBolum", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.okulBolumID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.sinifID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ogrenci.sinifID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.SinifID, "", htmlAttributes: new { @class = "form-control select2", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.sinifID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenimTurID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ogrenci.ogrenimTurID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.OgrenimTurID, "", htmlAttributes: new { @class = "form-control select2", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenimTurID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenimTipID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ogrenci.ogrenimTipID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.OgrenimTipID, "", htmlAttributes: new { @class = "form-control select2", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenimTipID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.ogrenciNotOrt, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ogrenci.ogrenciNotOrt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ogrenci.ogrenciNotOrt, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.aileSgkID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ogrenci.aileSgkID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.AileSgkID, "", htmlAttributes: new { @class = "form-control select2", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.aileSgkID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group form-md-line-input">
+                @Html.LabelFor(model => model.ogrenci.engelDurumID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.ogrenci.engelDurumID, (IEnumerable<SelectListItem>)ViewContext.Controller.ViewBag.EngelDurumID, "", htmlAttributes: new { @class = "form-control select2", style = "width:100%;" })
+                    @Html.ValidationMessageFor(model => model.ogrenci.engelDurumID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn dark btn-outline" data-dismiss="modal">İptal</button>
+        <input type="submit" class="btn green" value="Kaydet">
+    </div>
+}
